@@ -25,7 +25,11 @@ class Merchant < ApplicationRecord
     end
   end
 
-  def self.order_alphabetically
-    order(:name)
+  def self.enabled_merchants
+    where(enabled: true).order(:name)
+  end
+
+  def self.disabled_merchants
+    where(enabled: false).order(:name)
   end
 end

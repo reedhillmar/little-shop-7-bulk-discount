@@ -330,6 +330,8 @@ Then next to each merchant name I see a button to disable or enable that merchan
 When I click this button
 Then I am redirected back to the admin merchants index
 And I see that the merchant's status has changed
+
+[x] done
 ```
 
 ```
