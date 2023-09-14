@@ -2,24 +2,23 @@ require 'rails_helper'
 
 RSpec.describe "As a visitor when I visit 'admin/merchants'" do
   before :each do
-    @gap = Merchant.create!(name: Faker::Name.name)
-    @handm = Merchant.create!(name: "H & M")
-    @nike = Merchant.create!(name: "Nike")
+    load_test_data
   end
+
   #user story 24
   it "I see the name of each merchant in the system" do
     visit 'admin/merchants'
 
-    within("#merchant-#{@gap.id}") do
-      expect(page).to have_content(@gap.name)
+    within("#merchant-#{@merchant_1.id}") do
+      expect(page).to have_content(@merchant_1.name)
     end
 
-    within("#merchant-#{@handm.id}") do
-      expect(page).to have_content(@handm.name)
+    within("#merchant-#{@merchant_2.id}") do
+      expect(page).to have_content(@merchant_2.name)
     end
 
-    within("#merchant-#{@nike.id}") do
-      expect(page).to have_content(@nike.name)
+    within("#merchant-#{@merchant_3.id}") do
+      expect(page).to have_content(@merchant_3.name)
     end
   end
 
@@ -27,11 +26,11 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
   it "each name is a link to the merchant's show page" do
     visit 'admin/merchants'
 
-    within("#merchant-#{@gap.id}") do
-      click_link "#{@gap.name}"
+    within("#merchant-#{@merchant_1.id}") do
+      click_link "#{@merchant_1.name}"
     end
 
-    expect(current_path).to eq("/admin/merchants/#{@gap.id}")
-    expect(page).to have_content(@gap.name)
+    expect(current_path).to eq("/admin/merchants/#{@merchant_1.id}")
+    expect(page).to have_content(@merchant_1.name)
   end
 end
