@@ -2,7 +2,7 @@ require "rails_helper"
 
 RSpec.describe "Merchant Dashboard show page", type: :feature do
   before :each do
-    @merchant_1 = Merchant.create!(name: "Ray's Handmade Jewelry")
+    load_test_data
   end
 
   it "displays the name of the merchant" do

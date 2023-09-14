@@ -9,7 +9,6 @@ RSpec.describe "admin dashboard" do
 
   it "displays a link to the admin merchants index" do
     visit "/admin"
-
     expect(page).to have_link("Merchants")
     click_link("Merchants")
     expect(page).to have_current_path("/admin/merchants")
