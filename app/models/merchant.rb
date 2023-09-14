@@ -8,4 +8,20 @@ class Merchant < ApplicationRecord
   
 
   validates_presence_of :name
+
+  def enabled_or_disabled
+    if enabled == true
+      "Enabled"
+    elsif enabled == false
+      "Disabled"
+    end
+  end
+
+  def button_text
+    if enabled == true
+      "Disable"
+    elsif enabled == false
+      "Enable"
+    end
+  end
 end

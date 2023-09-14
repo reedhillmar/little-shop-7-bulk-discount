@@ -13,12 +13,20 @@ class Admin::MerchantsController < ApplicationController
 
   def update
     merchant = Merchant.find(params[:id])
-    if merchant.update(merchant_params)
-      redirect_to "/admin/merchants/#{params[:id]}"
-      flash[:notice] = "Merchant name has been updated"
-    else
-      redirect_to "/admin/merchants/#{params[:id]}/edit"
-      flash[:alert] = "Error: #{error_message(merchant.errors)}"
+    if params[:button] == nil
+      if merchant.update(merchant_params)
+        redirect_to "/admin/merchants/#{params[:id]}"
+        flash[:notice] = "Merchant name has been updated"
+      else
+        redirect_to "/admin/merchants/#{params[:id]}/edit"
+        flash[:alert] = "Error: #{error_message(merchant.errors)}"
+      end
+    elsif params[:button] == "Enable"
+      merchant.update(enabled: true)
+      redirect_to "/admin/merchants"
+    elsif params[:button] == "Disable"
+      merchant.update(enabled: false)
+      redirect_to "/admin/merchants"
     end
   end
 
