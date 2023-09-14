@@ -2,8 +2,9 @@
 
 <% @merchants.each do |merchant| %>
   <div id='merchant-<%= merchant.id %>'>
-    <%= link_to "#{merchant.name}", "/admin/merchants/#{merchant.id}" %><br>
-    <h3>Status: <%= merchant.enabled_or_disabled %></h3><br>
+    <h3><%= link_to "#{merchant.name}", "/admin/merchants/#{merchant.id}" %></h3>
+    <p>Status: <%= merchant.enabled_or_disabled %><p>
     <%= button_to "#{merchant.button_text}", "/admin/merchants/#{merchant.id}?button=#{merchant.button_text}", method: :patch %>
+    <br>
   </div>
 <% end %>

@@ -24,4 +24,8 @@ class Merchant < ApplicationRecord
       "Enable"
     end
   end
+
+  def self.order_alphabetically
+    order(:name)
+  end
 end

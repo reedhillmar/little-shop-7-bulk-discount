@@ -37,7 +37,9 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
     # user story 27
     it "I see a button to disable or enable a merchant" do
       visit "/admin/merchants"
-  
+
+      save_and_open_page
+
       within("#merchant-#{@merchant_1.id}") do
         expect(page).to have_content("Status: Disabled")
         expect(page).to have_button("Enable")
@@ -46,6 +48,8 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
 
       expect(current_path).to eq("/admin/merchants")
       
+      save_and_open_page
+
       within("#merchant-#{@merchant_1.id}") do
         expect(page).to have_content("Status: Enabled")
         expect(page).to have_button("Disable")
@@ -53,5 +57,10 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
       end
 
       expect(current_path).to eq("/admin/merchants")
+
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Disabled")
+        expect(page).to have_button("Enable")
+      end
     end
 end
