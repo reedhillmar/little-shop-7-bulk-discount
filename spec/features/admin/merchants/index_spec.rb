@@ -65,7 +65,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
     it "I see two sections, one for 'Enabled Merchants' and one for 'Disabled Merchants'" do
       visit "/admin/merchants"
       
-      within('disabled_merchants') do
+      within('#disabled_merchants') do
         expect(page).not_to have_button("Disable")
         within("#merchant-#{@merchant_1.id}") do
           expect(page).to have_content("Status: Disabled")
@@ -74,7 +74,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
         end
       end
 
-      within('enabled_merchants') do
+      within('#enabled_merchants') do
         expect(page).not_to have_button("Enable")
         within("#merchant-#{@merchant_1.id}") do
           expect(page).to have_content("Status: Enabled")
