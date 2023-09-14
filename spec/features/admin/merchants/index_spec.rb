@@ -38,8 +38,6 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
     it "I see a button to disable or enable a merchant" do
       visit "/admin/merchants"
 
-      save_and_open_page
-
       within("#merchant-#{@merchant_1.id}") do
         expect(page).to have_content("Status: Disabled")
         expect(page).to have_button("Enable")
@@ -47,8 +45,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
       end
 
       expect(current_path).to eq("/admin/merchants")
-      
-      save_and_open_page
+    
 
       within("#merchant-#{@merchant_1.id}") do
         expect(page).to have_content("Status: Enabled")
@@ -63,4 +60,26 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
         expect(page).to have_button("Enable")
       end
     end
-end
+
+    #user story 28
+    it "I see two sections, one for 'Enabled Merchants' and one for 'Disabled Merchants'" do
+      visit "/admin/merchants"
+      
+      within('disabled_merchants') do
+        expect(page).not_to have_button("Disable")
+        within("#merchant-#{@merchant_1.id}") do
+          expect(page).to have_content("Status: Disabled")
+          expect(page).to have_button("Enable")
+          click_button "Enable"
+        end
+      end
+
+      within('enabled_merchants') do
+        expect(page).not_to have_button("Enable")
+        within("#merchant-#{@merchant_1.id}") do
+          expect(page).to have_content("Status: Enabled")
+          expect(page).to have_button("Disable")
+        end
+      end
+    end
+  end
