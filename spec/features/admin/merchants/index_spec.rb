@@ -34,4 +34,25 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
     expect(current_path).to eq("/admin/merchants/#{@gap.id}")
     expect(page).to have_content(@gap.name)
   end
+
+    # user story 27
+    it "I see a button to disable or enable a merchant" do
+      visit "/admin/merchants"
+  
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Disabled")
+        expect(page).to have_button("Enable")
+        click_button "Enable"
+      end
+
+      expect(current_path).to eq("/admin/merchants")
+      
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Enabled")
+        expect(page).to have_button("Disable")
+        click_button "Disable"
+      end
+
+      expect(current_path).to eq("/admin/merchants")
+    end
 end
