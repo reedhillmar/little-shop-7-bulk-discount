@@ -30,8 +30,8 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
 
   # User Story 3
   it "shows top 5 customers with successful transactions" do
-    visit "/merchants/#{@merchant_1.id}/dashboard"
-    top_customers = @merchant_1.top_five_customers
+    visit "/merchants/#{@merchant_5.id}/dashboard"
+    top_customers = @merchant_5.top_five_customers
     save_and_open_page
     within "#top_five_customers" do 
     end
