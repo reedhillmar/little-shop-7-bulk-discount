@@ -6,4 +6,5 @@ class Transaction < ApplicationRecord
   validates_presence_of :credit_card_expiration_date
   validates_presence_of :result
 
+  enum :result, [:failed, :success]
 end
