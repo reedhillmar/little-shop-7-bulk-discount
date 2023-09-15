@@ -33,4 +33,53 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
     expect(current_path).to eq("/admin/merchants/#{@merchant_1.id}")
     expect(page).to have_content(@merchant_1.name)
   end
-end
+
+    # user story 27
+    it "I see a button to disable or enable a merchant" do
+      visit "/admin/merchants"
+
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Disabled")
+        expect(page).to have_button("Enable")
+        click_button "Enable"
+      end
+
+      expect(current_path).to eq("/admin/merchants")
+    
+
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Enabled")
+        expect(page).to have_button("Disable")
+        click_button "Disable"
+      end
+
+      expect(current_path).to eq("/admin/merchants")
+
+      within("#merchant-#{@merchant_1.id}") do
+        expect(page).to have_content("Status: Disabled")
+        expect(page).to have_button("Enable")
+      end
+    end
+
+    #user story 28
+    it "I see two sections, one for 'Enabled Merchants' and one for 'Disabled Merchants'" do
+      visit "/admin/merchants"
+      
+      within('#disabled_merchants') do
+        expect(page).not_to have_button("Disable")
+        within("#merchant-#{@merchant_1.id}") do
+          expect(page).to have_content("Status: Disabled")
+          expect(page).to have_button("Enable")
+          click_button "Enable"
+        end
+      end
+
+      within('#enabled_merchants') do
+        expect(page).not_to have_button("Enable")
+        within("#merchant-#{@merchant_1.id}") do
+          expect(page).to have_content("Status: Enabled")
+          expect(page).to have_button("Disable")
+        end
+      end
+    end
+  end
