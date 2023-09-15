@@ -59,4 +59,10 @@ class Merchant < ApplicationRecord
         .where("invoice_items.status = '1' OR invoice_items.status = '0'") 
         .select("items.*, invoice_items.invoice_id")
   end
+
+  #US 30 - top 5 merchants by revenue
+  def self.top_5_by_revenue
+    require 'pry';binding.pry
+    where("transaction.status = 1")
+  end
 end

@@ -82,4 +82,13 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
         end
       end
     end
+
+    #user story 30
+    it "I see the names of the top 5 merchants by total revenue generated" do
+      visit "/admin/merchants"
+
+      within('#top_5_merchants') do
+        expect(page).to have_content("Top 5 Merchants by Revenue")
+      end
+    end
   end
