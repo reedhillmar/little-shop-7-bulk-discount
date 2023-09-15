@@ -317,6 +317,8 @@ And I see a form filled in with the existing merchant attribute information
 When I update the information in the form and I click ‘submit’
 Then I am redirected back to the merchant's admin show page where I see the updated information
 And I see a flash message stating that the information has been successfully updated.
+
+[x] done
 ```
 
 ```
@@ -328,6 +330,8 @@ Then next to each merchant name I see a button to disable or enable that merchan
 When I click this button
 Then I am redirected back to the admin merchants index
 And I see that the merchant's status has changed
+
+[x] done
 ```
 
 ```
@@ -337,6 +341,8 @@ As an admin,
 When I visit the admin merchants index (/admin/merchants)
 Then I see two sections, one for "Enabled Merchants" and one for "Disabled Merchants"
 And I see that each Merchant is listed in the appropriate section
+
+[x] done
 ```
 
 ```
@@ -351,6 +357,8 @@ When I fill out the form I click ‘Submit’
 Then I am taken back to the admin merchants index page
 And I see the merchant I just created displayed
 And I see my merchant was created with a default status of disabled.
+
+[x] done
 ```
 
 ```
