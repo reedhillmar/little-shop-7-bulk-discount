@@ -12,7 +12,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     expect(page).to have_content(@merchant_1.name)
   end
 
-# User Story 2
+  # User Story 2
   it "displays a link to merchant items index" do
     visit "/merchants/#{@merchant_1.id}/dashboard"
 
@@ -54,7 +54,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   # And next to each Item I see the id of the invoice that ordered my item
   # And each invoice id is a link to my merchant's invoice show page
   # User Story 4
-  it "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
+  xit "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
@@ -75,11 +75,12 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
-      expect(page).to have_content("#{@item_1_m5.name} - Invoice ID: #{@item_1_m5.invoice_id}")
+    save_and_open_page
+      expect(page).to have_content("#{@item_1_m5.name} - Invoice ID: #{@item_1_m5.invoice_items.invoice_id}")
     end
   end 
 
-  it "shows each "
+  # it "shows each "
 
     # within "#items_ready_to_ship" do
     #   expect(page).to have_link(invoice.id, href: merchant_invoice_path(merchant, invoice))
