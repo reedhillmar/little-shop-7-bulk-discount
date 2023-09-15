@@ -31,10 +31,19 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   # User Story 3
   it "shows top 5 customers with successful transactions" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
-    top_customers = @merchant_5.top_five_customers
-    save_and_open_page
+    
+
     within "#top_five_customers" do 
+    expect(page).to have_content(@customer_3.first_name)
+    expect(page).to have_content(@customer_2.first_name)
+    expect(page).to have_content(@customer_5.first_name)
+    expect(page).to have_content(@customer_6.first_name)
+    expect(page).to have_content(@customer_1.first_name)
+
+    @merchant_1.top_five_customers.each do |customer|
+      expect(page).to have_content(customer.transaction_count)
     end
+  end
   end
 
 
