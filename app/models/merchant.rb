@@ -63,7 +63,6 @@ class Merchant < ApplicationRecord
 
   #US 30 - top 5 merchants by revenue
   def self.top_5_by_revenue
-    require 'pry';binding.pry
-    where("transaction.status = 1")
+    select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue").joins(:transactions).where("transactions.result = '1'").group(:id).order("revenue desc").limit(5)
   end
 end
