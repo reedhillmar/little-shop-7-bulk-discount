@@ -5,14 +5,23 @@ class Admin::MerchantsController < ApplicationController
     @top_5_merchants = Merchant.top_5_by_revenue
   end
 
-  def show
-    @merchant = Merchant.find(params[:id])
-  end
-
   def edit
     @merchant = Merchant.find(params[:id])
   end
+  
+  def new
+    @merchant = Merchant.new
+  end
+  
+  def create
+    merchant = Merchant.create(merchant_params)
+    redirect_to "/admin/merchants"
+  end
 
+  def show
+    @merchant = Merchant.find(params[:id])
+  end
+  
   def update
     merchant = Merchant.find(params[:id])
     if params[:button] == nil

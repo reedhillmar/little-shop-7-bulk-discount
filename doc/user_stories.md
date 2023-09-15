@@ -341,6 +341,8 @@ As an admin,
 When I visit the admin merchants index (/admin/merchants)
 Then I see two sections, one for "Enabled Merchants" and one for "Disabled Merchants"
 And I see that each Merchant is listed in the appropriate section
+
+[x] done
 ```
 
 ```
@@ -355,6 +357,8 @@ When I fill out the form I click ‘Submit’
 Then I am taken back to the admin merchants index page
 And I see the merchant I just created displayed
 And I see my merchant was created with a default status of disabled.
+
+[x] done
 ```
 
 ```
