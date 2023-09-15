@@ -18,7 +18,7 @@ RSpec.describe Merchant, type: :model do
   end
 
   describe "class methods" do
-    it ".top_five_customers shows top 5 customers with successful transactions" do
+    it ".top_five_customers shows top 5 customers and transaction count" do
       top_customers = @merchant_5.top_five_customers
 
       expect(top_customers.length).to eq(5)
