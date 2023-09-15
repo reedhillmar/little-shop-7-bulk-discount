@@ -84,7 +84,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
   end
 
   # user story 29
-  it "I see a link to create a new merchant"
+  it "I see a link to create a new merchant" do
     visit "/admin/merchants"
 
     click_link "Create New Merchant"
@@ -93,7 +93,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
 
     fill_in :name, with: "Terry's Top-Dollar Trinkets"
 
-    click_button :submit
+    click_button "Create Merchant"
 
     expect(current_path).to eq("/admin/merchants")
     within('#disabled_merchants') do
@@ -102,4 +102,5 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
         expect(page).to have_content("Status: Disabled")
       end
     end
+  end
 end
