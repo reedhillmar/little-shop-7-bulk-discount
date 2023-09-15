@@ -4,11 +4,25 @@
 <ul>
   <% @merchant.top_five_customers.each do |customer| %>
     <li>
-      <%= customer.customer_name %>(<%= customer.transaction_count %> Transactions)
+      <%= customer.customer_name %> (<%= customer.transaction_count %> Transactions)
     </li>
   <% end %>
 </ul>
 </div>
 
+<div id="items_ready_to_ship">
+<h2> Items Ready to Ship </h2>
+  <ul>
+    <% @merchant.items_ready_to_ship.each do |item| %>
+      <li>
+        <%# <%= require 'pry';binding.pry %> 
+        <p><%= item.name %> - Invoice ID: <%= link_to "item.invoice_id", "/merchants/#{@merchant.id}/invoices/#{@invoice.id}" %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <p><%= link_to "#{@merchant.name} Items", "/merchants/#{@merchant.id}/items" %></p>
 <p><%= link_to "#{@merchant.name} Invoices", "/merchants/#{@merchant.id}/invoices" %></p>
+
+
