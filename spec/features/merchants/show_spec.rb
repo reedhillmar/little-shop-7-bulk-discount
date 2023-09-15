@@ -52,39 +52,32 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   end
 
   # And next to each Item I see the id of the invoice that ordered my item
-  # And each invoice id is a link to my merchant's invoice show page
   # User Story 4
-  xit "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
+  it "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
       expect(page).to have_content("Items Ready to Ship")
-      expect(page).to have_content("#{@item_1_m5.name} - Invoice ID: #{@item_1_m5.invoice_id}")
+      expect(page).to have_content("#{@item_1_m5.name} - Invoice ID: #{@invoice_item_1_i3_c1.invoice_id}")
     end
-    
-
-    # @merchant_5.items_ready_to_ship.each do |item|
-    #   expect(page).to have_content("#{item.name} Invoice:")
-    # end
   end
 
-  # And next to each Item I see the id of the invoice that ordered my item
-  # And each invoice id is a link to my merchant's invoice show page
+   # And each invoice id is a link to my merchant's invoice show page 
    # User Story 4
-   it "displays invoice id of the item" do
+   it "displays link of item invoice id" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
-    save_and_open_page
-      expect(page).to have_content("#{@item_1_m5.name} - Invoice ID: #{@item_1_m5.invoice_items.invoice_id}")
+      click_link("#{@invoice_item_1_i3_c1.invoice_id}")
+      expect(current_path).to eq("/merchants/#{@merchant_5.id}/invoices/#{@invoice_item_1_i3_c1.invoice_id}")
     end
   end 
 
-  # it "shows each "
-
+   xit "shows each " do
     # within "#items_ready_to_ship" do
     #   expect(page).to have_link(invoice.id, href: merchant_invoice_path(merchant, invoice))
-    # end
+     
 
     # Invoice: <%= link_to item.invoice_id, merchant_invoice_path(@merchant, item.invoice_id) %>
+   end
 end

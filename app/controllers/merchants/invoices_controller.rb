@@ -4,4 +4,8 @@ class Merchants::InvoicesController < ApplicationController
     @invoices = @merchant.invoices
     #@invoice_items = @invoices.invoice_items
   end
+
+  def show
+
+  end
 end

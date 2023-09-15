@@ -56,8 +56,8 @@ class Merchant < ApplicationRecord
   # Artist.select("artists.*, sum(play_count) as total_play_count").joins(:songs).group("artists.id).order("total_play_count asc").limit(3).map{ |artist| artist.name}
   # User Story 4
   def items_ready_to_ship
-    Item.joins(invoice_items: :invoice)
-        .where("invoice_items.status = '1' OR invoice_items.status = '0'") 
+    self.items.joins(invoice_items: :invoice)
+        .where("invoice_items.status = '1'") 
         .select("items.*, invoice_items.invoice_id")
   end
 end
