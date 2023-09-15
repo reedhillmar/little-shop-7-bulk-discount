@@ -5,6 +5,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     load_test_data
   end
 
+  # User Story 1
   it "displays the name of the merchant" do
     visit "/merchants/#{@merchant_1.id}/dashboard"
 
