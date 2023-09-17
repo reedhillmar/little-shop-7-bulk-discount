@@ -20,6 +20,4 @@ RSpec.describe "Merchant items index", type: :feature do
     expect(page).to have_content(@item_9_m1.name)
     expect(page).to have_content(@item_10_m1.name)
   end
-
-  
 end

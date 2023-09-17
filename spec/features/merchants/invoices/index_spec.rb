@@ -20,8 +20,18 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   it "links each invoice id to the merchant invoice show page" do
     visit "/merchants/#{@merchant_5.id}/invoices"
 
-    #expect(page).to have_link("Invoice ID: #{@invoice_3_c1.id}")
+    expect(page).to have_link("Invoice ID: #{@invoice_3_c1.id}")
     click_link("Invoice ID: #{@invoice_3_c1.id}")
     expect(current_path).to eq("/merchants/#{@merchant_5.id}/invoices/#{@invoice_3_c1.id}")
+  end
+
+  # User Story 15
+  it "displays invoice details and the Customer's first and last name" do
+    visit "/merchants/#{@merchant_5.id}/invoices"
+
+    expect(page).to have_content(@invoice_3_c1.id)
+    expect(page).to have_content(@invoice_3_c1.status)
+    expect(page).to have_content(@invoice_3_c1.format_created_at)
+    expect(page).to have_content(@invoice_3_c1.customer_name)
   end
 end
