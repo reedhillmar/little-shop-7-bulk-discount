@@ -412,6 +412,7 @@ Then I see information related to that invoice including:
 - Invoice status
 - Invoice created_at date in the format "Monday, July 18, 2019"
 - Customer first and last name
+
 [x] done
 ```
 
@@ -425,6 +426,8 @@ Then I see all of the items on the invoice including:
 - The quantity of the item ordered
 - The price the Item sold for
 - The Invoice Item status
+
+[x] done
 ```
 
 ```
