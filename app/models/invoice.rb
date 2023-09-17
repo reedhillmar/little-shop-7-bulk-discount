@@ -17,7 +17,6 @@ class Invoice < ApplicationRecord
   end
 
   def total_revenue
-    # require 'pry';binding.pry
     total_revenue = 0
 
     invoice_items.each do |item|

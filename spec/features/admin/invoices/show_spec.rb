@@ -40,4 +40,19 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
       expect(page).to have_content("Total Revenue: #{@invoice_1_c1.total_revenue}")
     end
   end
+
+  # user story 36
+  it "I see the invoice status in a select field that allows me to update the status" do
+    visit "admin/invoices/#{@invoice_1_c1.id}"
+
+    expect(@invoice_1_c1.status).to eq("in_progress")
+
+    within("#invoice-information") do
+      select "completed"; :from => "status"
+
+      click_button "Update Invoice Status"
+    end
+
+    expect(@invoice_1_c1.status).to eq("completed")
+  end
 end
