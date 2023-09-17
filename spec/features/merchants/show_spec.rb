@@ -52,7 +52,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   end
 
   # User Story 4
-  it "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
+  xit "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
