@@ -453,5 +453,7 @@ And next to the select field I see a button to "Update Invoice Status"
 When I click this button
 I am taken back to the admin invoice show page
 And I see that my Invoice's status has now been updated
+
+[x] done
 ```
 

@@ -12,9 +12,9 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
     expect(page).to have_content(@invoice_1_c1.id)
 
     within("#invoice-information") do
-      expect(page).to have_content("Status: #{@invoice_1_c1.status}")
       expect(page).to have_content("Date Created: #{@invoice_1_c1.date_created}")
       expect(page).to have_content("Customer Name: #{@customer_1.full_name}")
+      expect(page).to have_content("Status: #{@invoice_1_c1.status}")
     end
   end
 
@@ -44,15 +44,18 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
   # user story 36
   it "I see the invoice status in a select field that allows me to update the status" do
     visit "admin/invoices/#{@invoice_1_c1.id}"
-
+    
     expect(@invoice_1_c1.status).to eq("in_progress")
 
     within("#invoice-information") do
-      select "completed"; :from => "status"
-
+      select "completed", from: "status"
       click_button "Update Invoice Status"
     end
 
+    @invoice_1_c1.reload
+
     expect(@invoice_1_c1.status).to eq("completed")
+
+    # refactor: make this test more robust! I know with visual check that the selected status is displaying correctly but I don't currently know how to test that with capybara/rspec
   end
 end

@@ -3,7 +3,10 @@
 <div id="invoice-information">
   <p>Date Created: <%= @invoice.date_created %></p>
   <p>Customer Name: <%= @invoice.customer_name %></p>
-  <p>Status: <%= @invoice.status %></p>
+  <%= form_with url: "/admin/invoices/#{@invoice.id}?update=status", method: :patch, data: {turbo: false} do |f| %>
+    <p>Status: <%= f.select :status, [["in_progress", "0"], ["completed", "1"], ["cancelled", "2"], ["#{@invoice.status}", "current", { hidden: true }]], selected: "current" %></p>
+    <%= f.submit "Update Invoice Status" %>
+  <% end %>
 </div>
 <br>
 <div id="invoice_items-information">
