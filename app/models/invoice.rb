@@ -22,7 +22,7 @@ class Invoice < ApplicationRecord
     invoice_items.each do |item|
       total_revenue += item.quantity * item.unit_price
     end
-
+    
     total_revenue
   end
 end

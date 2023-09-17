@@ -18,7 +18,7 @@ RSpec.describe "admin dashboard" do
     expect(page).to have_current_path("/admin/merchants")
   end
 # US20
-  xit "displays a link to the admin invoices index" do
+  it "displays a link to the admin invoices index" do
     visit "/admin"
 
     expect(page).to have_link("Invoices")
@@ -35,6 +35,5 @@ RSpec.describe "admin dashboard" do
     expect(@customer_6.first_name).to appear_before(@customer_1.first_name)
     expect(page).to have_content(@customer_3.first_name)
     expect(page).not_to have_content(@customer_4.first_name)
-    save_and_open_page
   end
 end

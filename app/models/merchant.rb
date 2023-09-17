@@ -7,7 +7,6 @@ class Merchant < ApplicationRecord
   
   validates_presence_of :name
 
-
   # User Story 3
   def top_five_customers
     Customer.joins(:transactions)
@@ -40,7 +39,6 @@ class Merchant < ApplicationRecord
 
   def self.disabled_merchants
     where(enabled: false).order(:name)
-
   end
 
   # User Story 3
@@ -53,12 +51,12 @@ class Merchant < ApplicationRecord
               .limit(5)
   end
 
-  # Artist.select("artists.*, sum(play_count) as total_play_count").joins(:songs).group("artists.id).order("total_play_count asc").limit(3).map{ |artist| artist.name}
-  # User Story 4
+  # User Story 4 & 5
   def items_ready_to_ship
     self.items.joins(invoice_items: :invoice)
         .where("invoice_items.status = '1'") 
         .select("items.*, invoice_items.invoice_id")
+        .order('invoices.created_at ASC')
   end
 
   #US 30 - top 5 merchants by revenue

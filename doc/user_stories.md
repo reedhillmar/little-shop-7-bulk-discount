@@ -398,6 +398,8 @@ As an admin,
 When I visit the admin Invoices index (/admin/invoices)
 Then I see a list of all Invoice ids in the system
 Each id links to the admin invoice show page
+
+[x] done
 ```
 
 ```
@@ -410,6 +412,8 @@ Then I see information related to that invoice including:
 - Invoice status
 - Invoice created_at date in the format "Monday, July 18, 2019"
 - Customer first and last name
+
+[x] done
 ```
 
 ```
@@ -422,6 +426,8 @@ Then I see all of the items on the invoice including:
 - The quantity of the item ordered
 - The price the Item sold for
 - The Invoice Item status
+
+[x] done
 ```
 
 ```
@@ -430,6 +436,8 @@ Then I see all of the items on the invoice including:
 As an admin
 When I visit an admin invoice show page (/admin/invoices/:invoice_id)
 Then I see the total revenue that will be generated from this invoice.
+
+[x] done
 ```
 
 ```
@@ -445,5 +453,7 @@ And next to the select field I see a button to "Update Invoice Status"
 When I click this button
 I am taken back to the admin invoice show page
 And I see that my Invoice's status has now been updated
+
+[x] done
 ```
 
