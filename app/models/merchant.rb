@@ -65,4 +65,10 @@ class Merchant < ApplicationRecord
   def self.top_5_by_revenue
     select("merchants.*, sum(invoice_items.quantity * invoice_items.unit_price) AS revenue").joins(:transactions).where("transactions.result = '1'").group(:id).order("revenue desc").limit(5)
   end
+
+  #US31 - best sales day
+  def best_day
+    # This is bad code that doesn't even begin to do what I wanted. I was coding too late last night
+    invoices.order("created_at desc").first.created_at.to_date
+  end
 end
