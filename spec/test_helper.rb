@@ -113,7 +113,7 @@ def load_test_data
 
       @invoice_5_c2 = @customer_2.invoices.create!(status: 1)
         @transaction_1_i5_c2 = @invoice_5_c2.transactions.create!(credit_card_number: "89123894701", result: 1, credit_card_expiration_date: "08/28")
-        @invoice_item_1_i5_c2 = @invoice_5_c2.invoice_items.create!(invoice_id: @invoice_5_c2.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
+        @invoice_item_1_i5_c2 = @invoice_5_c2.invoice_items.create!(invoice_id: @invoice_5_c2.id, item_id: @item_4_m5.id, quantity: 1, unit_price: @item_4_m5.unit_price, status: 1)
 
     @customer_3 = Customer.create!(first_name: "Pam", last_name: "Sanders")
       # @customer_3 invoices
@@ -191,7 +191,7 @@ def load_test_data
       @invoice_1_c6 = @customer_6.invoices.create!(status: 1)
         @transaction_1_i1_c6 = @invoice_1_c6.transactions.create!(credit_card_number: "4427", result: 1, credit_card_expiration_date: "12/24")
         @transaction_2_i1_c6 = @invoice_1_c6.transactions.create!(credit_card_number: "8088", result: 0, credit_card_expiration_date: "12/23")
-        @invoice_item_1_i1_c6 = @invoice_1_c6.invoice_items.create!(invoice_id: @invoice_1_c6.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
+        @invoice_item_1_i1_c6 = @invoice_1_c6.invoice_items.create!(invoice_id: @invoice_1_c6.id, item_id: @item_4_m5.id, quantity: 1, unit_price: @item_4_m5.unit_price, status: 1)
 
       @invoice_2_c6 = @customer_6.invoices.create!(status: 0)
         @transaction_1_i2_c6 = @invoice_2_c6.transactions.create!(credit_card_number: "8089", result: 0, credit_card_expiration_date: "12/23")
@@ -201,11 +201,11 @@ def load_test_data
       @invoice_3_c6 = @customer_6.invoices.create!(status: 0)
         @transaction_1_i3_c6 = @invoice_3_c6.transactions.create!(credit_card_number: "8084", result: 0, credit_card_expiration_date: "12/23")
         @transaction_2_i3_c6 = @invoice_3_c6.transactions.create!(credit_card_number: "8083", result: 1, credit_card_expiration_date: "12/23")
-        @invoice_item_1_i3_c6 = @invoice_3_c6.invoice_items.create!(invoice_id: @invoice_3_c6.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
+        @invoice_item_1_i3_c6 = @invoice_3_c6.invoice_items.create!(invoice_id: @invoice_3_c6.id, item_id: @item_6_m5.id, quantity: 1, unit_price: @item_6_m5.unit_price, status: 1)
 
       @invoice_4_c6 = @customer_6.invoices.create!(status: 2)
         @transaction_1_i4_c6 = @invoice_4_c6.transactions.create!(credit_card_number: "8082", result: 1, credit_card_expiration_date: "12/23")
-        @invoice_item_1_i4_c6 = @invoice_4_c6.invoice_items.create!(invoice_id: @invoice_4_c6.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
+        @invoice_item_1_i4_c6 = @invoice_4_c6.invoice_items.create!(invoice_id: @invoice_4_c6.id, item_id: @item_8_m5.id, quantity: 1, unit_price: @item_8_m5.unit_price, status: 1)
 
       @invoice_5_c6 = @customer_6.invoices.create!(status: 1)
         @transaction_1_i5_c6 = @invoice_5_c6.transactions.create!(credit_card_number: "8081", result: 0, credit_card_expiration_date: "10/23")
