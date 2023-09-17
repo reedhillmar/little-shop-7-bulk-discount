@@ -436,6 +436,8 @@ Then I see all of the items on the invoice including:
 As an admin
 When I visit an admin invoice show page (/admin/invoices/:invoice_id)
 Then I see the total revenue that will be generated from this invoice.
+
+[x] done
 ```
 
 ```

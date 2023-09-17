@@ -15,4 +15,15 @@ class Invoice < ApplicationRecord
   def customer_name
     customer.full_name
   end
+
+  def total_revenue
+    # require 'pry';binding.pry
+    total_revenue = 0
+
+    invoice_items.each do |item|
+      total_revenue += item.quantity * item.unit_price
+    end
+    
+    total_revenue
+  end
 end
