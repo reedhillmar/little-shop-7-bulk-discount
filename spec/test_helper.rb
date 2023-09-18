@@ -198,7 +198,7 @@ def load_test_data
         @transaction_2_i2_c6 = @invoice_2_c6.transactions.create!(credit_card_number: "8087", result: 1, credit_card_expiration_date: "12/23")
         @invoice_item_1_i2_c6 = @invoice_2_c6.invoice_items.create!(invoice_id: @invoice_2_c6.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
 
-      @invoice_3_c6 = @customer_6.invoices.create!(status: 0)
+      @invoice_3_c6 = @customer_6.invoices.create!(status: 1)
         @transaction_1_i3_c6 = @invoice_3_c6.transactions.create!(credit_card_number: "8084", result: 0, credit_card_expiration_date: "12/23")
         @transaction_2_i3_c6 = @invoice_3_c6.transactions.create!(credit_card_number: "8083", result: 1, credit_card_expiration_date: "12/23")
         @invoice_item_1_i3_c6 = @invoice_3_c6.invoice_items.create!(invoice_id: @invoice_3_c6.id, item_id: @item_6_m5.id, quantity: 1, unit_price: @item_6_m5.unit_price, status: 1)
