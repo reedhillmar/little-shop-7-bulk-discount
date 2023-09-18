@@ -134,7 +134,7 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
       within("#top_merchant-#{@merchant_2.id}") do
         expect(page).to have_content("Top selling date for #{@merchant_2.name} was #{@merchant_2.best_day}")
       end
-      
+
       within("#top_merchant-#{@merchant_6.id}") do
         expect(page).to have_link("#{@merchant_6.name}")
         expect(page).to have_content("Top selling date for #{@merchant_6.name} was #{@merchant_6.best_day}")

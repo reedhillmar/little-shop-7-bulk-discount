@@ -66,14 +66,8 @@ class Merchant < ApplicationRecord
 
   #US31 - best sales day
   def best_day
-    # This is bad code that doesn't even begin to do what I wanted. I was coding too late last night
-    # invoices.order("created_at desc").first.created_at.to_date
-    # require 'pry';binding.pry
-    # this give me...something...not sure what
-    # invoices.joins(:invoice_items).group("invoices.created_at.to_date AS created_date").order(Arel.sql("sum(invoice_items.quantity * invoice_items.unit_price) AS total_revenue desc"))
-    #This is so close!!!
-    best_day = invoices.joins(:invoice_items).select("invoices.created_at, invoices.created_at::date AS date_created, sum(invoice_items.quantity * invoice_items.unit_price) AS total_revenue").group(:date_created).order("total_revenue desc")[0]
+    best_day = invoices.joins(:invoice_items).select("invoices.created_at::date AS created_date, sum(invoice_items.quantity * invoice_items.unit_price) AS total_revenue").group(:created_date).order("total_revenue desc")[0]
 
-    best_day.created_at
+    best_day.created_date.strftime("%A, %B %e, %Y")
   end
 end
