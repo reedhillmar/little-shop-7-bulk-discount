@@ -4,4 +4,7 @@
 <p> Price: <%= "#{@item.unit_price}" %></p>
 </ul>
 
+<%= link_to "Edit #{@item.name}", "/merchants/#{@item.merchant.id}/items/#{@item.id}/edit", method: :get %>
+
+    <%= flash[:notice] %>
 
