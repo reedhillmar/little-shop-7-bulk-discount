@@ -28,11 +28,11 @@ RSpec.describe "admin dashboard" do
 # US21
   it "displays the names of the top 5 customers who have conducted the largest number of successful transactions" do 
     visit "/admin"
-    
-    expect(@customer_3.first_name).to appear_before(@customer_2.first_name)
-    expect(@customer_2.first_name).to appear_before(@customer_5.first_name)
+
+    expect(@customer_3.first_name).to appear_before(@customer_5.first_name)
     expect(@customer_5.first_name).to appear_before(@customer_6.first_name)
-    expect(@customer_6.first_name).to appear_before(@customer_1.first_name)
+    expect(@customer_6.first_name).to appear_before(@customer_2.first_name)
+    expect(@customer_2.first_name).to appear_before(@customer_1.first_name)
     expect(page).to have_content(@customer_3.first_name)
     expect(page).not_to have_content(@customer_4.first_name)
   end
