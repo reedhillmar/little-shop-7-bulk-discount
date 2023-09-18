@@ -8,13 +8,21 @@ class Invoice < ApplicationRecord
 
   enum :status, [:in_progress, :completed, :cancelled]
 
-  # User Story 15
-  def customer_name
-    "#{customer.first_name} #{customer.last_name}"
+  def date_created
+    created_at.strftime("%A, %B %e, %Y")
   end
 
-  # User Story 15
-  def format_created_at
-    self.created_at.strftime("%A, %B %d, %Y")
+  def customer_name
+    customer.full_name
+  end
+
+  def total_revenue
+    total_revenue = 0
+
+    invoice_items.each do |item|
+      total_revenue += item.quantity * item.unit_price
+    end
+    
+    total_revenue
   end
 end

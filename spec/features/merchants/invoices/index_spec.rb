@@ -31,7 +31,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
 
     expect(page).to have_content(@invoice_3_c1.id)
     expect(page).to have_content(@invoice_3_c1.status)
-    expect(page).to have_content(@invoice_3_c1.format_created_at)
+    expect(page).to have_content(@invoice_3_c1.date_created)
     expect(page).to have_content(@invoice_3_c1.customer_name)
   end
 end
