@@ -14,5 +14,16 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
     expect(page).to have_content( @invoice_item_1_i3_c6.quantity)
     expect(page).to have_content(@item_6_m5.unit_price)
     expect(page).to have_content(@invoice_item_1_i3_c6.status)
+    save_and_open_page
   end 
+
+  # As a merchant
+  # When I visit my merchant invoice show page (/merchants/:merchant_id/invoices/:invoice_id)
+  # Then I see the total revenue that will be generated from all of my items on the invoice
+  # User Story 17
+  it "displays total revenue generated from all items on the invoice" do
+    visit "/merchants/#{@merchant_5.id}/invoices/#{@invoice_3_c6.id}"
+
+    expect(page).to have_content("Total Revenue for Invoice: #{@invoice_3_c6.total_revenue}")
+  end
 end
