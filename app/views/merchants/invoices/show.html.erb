@@ -1,1 +1,12 @@
-<h2> Item Invoices </h2>
+<h2><%= @merchant.name %>'s Items Invoices </h2>
+
+<ul>
+  <% @invoice_items.each do |invoice_item| %>
+    <li>
+      <strong> Item Name: </strong><%= invoice_item.item.name%> <br>
+      <strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br>
+      <strong> Item Price: </strong><%= invoice_item.unit_price%> <br>
+      <strong> Invoice Status: </strong><%= invoice_item.status%> <br>
+    </li>
+  <% end %>
+</ul>
