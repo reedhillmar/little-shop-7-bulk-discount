@@ -14,7 +14,6 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
     expect(page).to have_content( @invoice_item_1_i3_c6.quantity)
     expect(page).to have_content(@item_6_m5.unit_price)
     expect(page).to have_content(@invoice_item_1_i3_c6.status)
-    save_and_open_page
   end 
 
   # User Story 17
