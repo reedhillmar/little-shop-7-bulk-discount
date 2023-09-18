@@ -8,8 +8,9 @@ class Customer < ApplicationRecord
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-  def self.top_customers
-    Customer.joins(:transactions)
+  def self.top_customers # write unit test
+    # require 'pry'; binding.pry
+            joins(:transactions)
             .where("transactions.result = '1'")
             .group("customers.id")
             .select("CONCAT(customers.first_name, ' ', customers.last_name) AS customer_name, customers.*, COUNT(DISTINCT transactions.id) AS transaction_count")
