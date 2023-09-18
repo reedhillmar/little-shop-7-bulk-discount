@@ -17,9 +17,6 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
     save_and_open_page
   end 
 
-  # As a merchant
-  # When I visit my merchant invoice show page (/merchants/:merchant_id/invoices/:invoice_id)
-  # Then I see the total revenue that will be generated from all of my items on the invoice
   # User Story 17
   it "displays total revenue generated from all items on the invoice" do
     visit "/merchants/#{@merchant_5.id}/invoices/#{@invoice_3_c6.id}"
