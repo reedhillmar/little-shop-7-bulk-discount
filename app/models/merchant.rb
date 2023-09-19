@@ -9,7 +9,7 @@ class Merchant < ApplicationRecord
 
   # User Story 3
   def top_five_customers
-    Customer.joins(:transactions)
+    customers.joins(:transactions)
             .where("transactions.result = '1'") 
             .group('customers.id')
             .select("CONCAT(customers.first_name, ' ', customers.last_name) AS customer_name, customers.*, COUNT(DISTINCT transactions.id) AS transaction_count")
@@ -39,16 +39,6 @@ class Merchant < ApplicationRecord
 
   def self.disabled_merchants
     where(enabled: false).order(:name)
-  end
-
-  # User Story 3
-  def transaction_count
-    customers.joins(:transactions)
-              .where("transactions.result = '1'") 
-              .group('customers.id')
-              .select("CONCAT(customers.first_name, ' ', customers.last_name) AS customer_name, customers.*, COUNT(DISTINCT transactions.id) AS transaction_count")
-              .order('transaction_count DESC')
-              .limit(5)
   end
 
   # User Story 4 & 5
