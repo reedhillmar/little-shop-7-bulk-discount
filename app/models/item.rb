@@ -6,4 +6,15 @@ class Item < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :description
   validates_presence_of :unit_price
+
+  # User Story 5
+  def format_created_at
+    self.created_at.strftime("%A, %B %d, %Y")
+  end
+
+  # User Story 9
+
+  def update_status
+    self.toggle!(:status)
+  end
 end

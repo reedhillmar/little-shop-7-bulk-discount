@@ -8,13 +8,16 @@ class Customer < ApplicationRecord
   validates_presence_of :first_name
   validates_presence_of :last_name
 
-  def self.top_customers # write unit test
-    # require 'pry'; binding.pry
-            joins(:transactions)
+  def self.top_customers
+    joins(:transactions)
             .where("transactions.result = '1'")
             .group("customers.id")
             .select("CONCAT(customers.first_name, ' ', customers.last_name) AS customer_name, customers.*, COUNT(DISTINCT transactions.id) AS transaction_count")
             .order('transaction_count DESC')
             .limit(5)
+  end
+
+  def full_name
+    "#{first_name} #{last_name}"
   end
 end

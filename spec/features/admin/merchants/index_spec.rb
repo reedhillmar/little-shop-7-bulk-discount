@@ -103,4 +103,42 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
       end
     end
   end
+
+  #user story 30
+  it "I see the names of the top 5 merchants by total revenue generated" do
+    @top_5_merchants = Merchant.top_5_by_revenue
+
+    visit "/admin/merchants"
+
+    within('#top_5_merchants') do
+      expect(page).to have_content("Top 5 Merchants by Revenue")
+      expect("#{@top_5_merchants.first.revenue}").to appear_before("#{@top_5_merchants.last.revenue}")
+
+      within("#top_merchant-#{@merchant_2.id}") do
+        expect(page).to have_link("#{@merchant_2.name}")
+        expect(page).to have_content("Total Revenue: #{@top_5_merchants.first.revenue}")
+      end
+      
+      within("#top_merchant-#{@merchant_6.id}") do
+        expect(page).to have_link("#{@merchant_6.name}")
+        expect(page).to have_content("Total Revenue: #{@top_5_merchants.last.revenue}")
+      end
+    end
+  end
+
+  #user story 31
+  it "I see the best sales day of the top 5 merchants" do
+    visit "/admin/merchants"
+
+    within('#top_5_merchants') do
+      within("#top_merchant-#{@merchant_2.id}") do
+        expect(page).to have_content("Top selling date for #{@merchant_2.name} was #{@merchant_2.best_day}")
+      end
+
+      within("#top_merchant-#{@merchant_6.id}") do
+        expect(page).to have_link("#{@merchant_6.name}")
+        expect(page).to have_content("Top selling date for #{@merchant_6.name} was #{@merchant_6.best_day}")
+      end
+    end
+  end
 end

@@ -1,6 +1,9 @@
 require "rails_helper"
 
 RSpec.describe Item, type: :model do
+  before :each do
+    load_test_data
+  end
 
   describe "relationships" do
     it {should belong_to(:merchant)}
@@ -14,4 +17,23 @@ RSpec.describe Item, type: :model do
     it {should validate_presence_of(:unit_price)}
   end
 
+  describe "class methods" do
+    it "update_status toggles item status" do
+      
+      expect( @item_1_m1.status).to be true
+      @item_1_m1.update_status
+      expect( @item_1_m1.status).to be false
+      @item_1_m1.update_status
+      expect( @item_1_m1.status).to be true
+        
+    end
+  end
+
+  describe "instance methods" do
+    describe "#format_created_at" do
+      it "can format created_at" do
+        expect(@item_7_m4.format_created_at).to eq("Thursday, March 08, 2012")
+      end
+    end
+  end
 end
