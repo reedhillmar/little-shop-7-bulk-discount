@@ -26,20 +26,20 @@ RSpec.describe "Merchant items index", type: :feature do
     visit "/merchants/#{@merchant_1.id}/items"
       
     within("##{@item_1_m1.id}") do
-      expect(page).to have_button("Enabled")
-      click_button "Enabled"
+      expect(page).to have_button("Disable")
+      click_button "Disable"
     end
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/items")
 
     within("##{@item_1_m1.id}") do
-      expect(page).to have_button("Disabled")
-      click_button "Disabled"
+      expect(page).to have_button("Enable")
+      click_button "Enable"
     end
 
     expect(current_path).to eq("/merchants/#{@merchant_1.id}/items")
 
     within("##{@item_1_m1.id}") do
-      expect(page).to have_button("Enabled")
+      expect(page).to have_button("Disable")
     end
   end
 
@@ -62,5 +62,28 @@ RSpec.describe "Merchant items index", type: :feature do
       expect(page).to have_content(@item_9_m1.name)
       expect(page).to have_content(@item_10_m1.name)
     end
+  end
+
+   # User Story 11
+   it "I see a link to create a new item" do
+    visit "/merchants/#{@merchant_1.id}/items"
+      
+    expect(page).to have_link("Create New Item")
+
+    click_link "Create New Item"
+
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items/new")
+    
+    fill_in "Name", with: "Gold Stuff"
+    fill_in "Description", with: "Expensive"
+    fill_in "Unit price", with: "126"
+    
+  
+    click_button "Create Item"
+
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items")
+
+    expect(page).to have_content("Gold Stuff")
+    
   end
 end
