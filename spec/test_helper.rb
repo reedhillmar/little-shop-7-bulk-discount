@@ -2,16 +2,16 @@ def load_test_data
   #Merchants and items
     @merchant_1 = Merchant.create!(name: "Ray's Handmade Jewelry")
       #merchant_1 items
-      @item_1_m1 = @merchant_1.items.create!(name: "Watch", description: "goes tic tic", unit_price: 600)
-      @item_2_m1 = @merchant_1.items.create!(name: "Ring", description: "For wife", unit_price: 1990)
-      @item_3_m1 = @merchant_1.items.create!(name: "Neckalce", description: "Goes on neck", unit_price: 836)
-      @item_4_m1 = @merchant_1.items.create!(name: "Ear Rings", description: "Two Piece", unit_price: 50)
-      @item_5_m1 = @merchant_1.items.create!(name: "Glasses", description: "Fancey", unit_price: 332)
-      @item_6_m1 = @merchant_1.items.create!(name: "Crown", description: "a bit much", unit_price: 999999)
-      @item_7_m1 = @merchant_1.items.create!(name: "Pocket Watch", description: "Cooler than an iphone", unit_price: 565)
-      @item_8_m1 = @merchant_1.items.create!(name: "Bracelet", description: "For wrist", unit_price: 30)
-      @item_9_m1 = @merchant_1.items.create!(name: "Another Ring", description: "is this the one", unit_price: 780)
-      @item_10_m1 = @merchant_1.items.create!(name: "Another watch", description: "Just like the first but cheaper", unit_price: 599)
+      @item_1_m1 = @merchant_1.items.create!(name: "Watch", description: "goes tic tic", unit_price: 600, status: true)
+      @item_2_m1 = @merchant_1.items.create!(name: "Ring", description: "For wife", unit_price: 1990, status: true)
+      @item_3_m1 = @merchant_1.items.create!(name: "Neckalce", description: "Goes on neck", unit_price: 836, status: true)
+      @item_4_m1 = @merchant_1.items.create!(name: "Ear Rings", description: "Two Piece", unit_price: 50, status: true)
+      @item_5_m1 = @merchant_1.items.create!(name: "Glasses", description: "Fancey", unit_price: 332, status: true)
+      @item_6_m1 = @merchant_1.items.create!(name: "Crown", description: "a bit much", unit_price: 999999, status: true)
+      @item_7_m1 = @merchant_1.items.create!(name: "Pocket Watch", description: "Cooler than an iphone", unit_price: 565, status: false)
+      @item_8_m1 = @merchant_1.items.create!(name: "Bracelet", description: "For wrist", unit_price: 30, status: false)
+      @item_9_m1 = @merchant_1.items.create!(name: "Another Ring", description: "is this the one", unit_price: 780, status: false)
+      @item_10_m1 = @merchant_1.items.create!(name: "Another watch", description: "Just like the first but cheaper", unit_price: 599, status: false)
 
     @merchant_2 = Merchant.create!(name: "Carls Cars")
       #merchant_2 items

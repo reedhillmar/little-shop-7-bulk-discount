@@ -60,4 +60,13 @@ class Merchant < ApplicationRecord
 
     best_day.created_date.strftime("%A, %B %e, %Y")
   end
+
+  #story 10
+  def enabled_items
+    items.where(status: true)
+  end
+
+  def disabled_items
+    items.where(status: false)
+  end
 end

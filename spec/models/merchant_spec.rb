@@ -39,6 +39,29 @@ RSpec.describe Merchant, type: :model do
         expect(Merchant.top_5_by_revenue).to eq([@merchant_2, @merchant_5, @merchant_1, @merchant_4, @merchant_6])
       end
     end
+
+    it "enabled_items" do
+      items = @merchant_1.enabled_items
+
+      expect(items.length).to eq(6)
+
+      expect(items[0]).to eq(@item_1_m1)
+      expect(items[1]).to eq(@item_2_m1)
+      expect(items[2]).to eq(@item_3_m1)
+      expect(items[3]).to eq(@item_4_m1)
+      expect(items[4]).to eq(@item_5_m1)
+      expect(items[5]).to eq(@item_6_m1)   
+    end
+    it ".disabled_items" do
+      items = @merchant_1.disabled_items
+
+      expect(items.length).to eq(4)
+
+      expect(items[0]).to eq(@item_7_m1)
+      expect(items[1]).to eq(@item_8_m1)
+      expect(items[2]).to eq(@item_9_m1)
+      expect(items[3]).to eq(@item_10_m1)
+    end
   end
 
   describe "instance methods" do

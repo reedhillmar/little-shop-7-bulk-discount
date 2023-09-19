@@ -11,4 +11,10 @@ class Item < ApplicationRecord
   def format_created_at
     self.created_at.strftime("%A, %B %d, %Y")
   end
+
+  # User Story 9
+
+  def update_status
+    self.toggle!(:status)
+  end
 end
