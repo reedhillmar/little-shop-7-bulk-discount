@@ -1,4 +1,4 @@
-<%= form_with model: @item, url: "/merchants/#{@item.merchant.id}/items/#{@item.id}", method: :patch, local: true do |form| %>
+<%= form_with url: "/merchants/#{@item.merchant.id}/items/#{@item.id}", method: :patch, local: true do |form| %>
 <%= form.label :name %>
   <%= form.text_field :name, value: @item.name %>
 
@@ -7,8 +7,6 @@
 
   <%= form.label :unit_price %>
   <%= form.text_field :unit_price, value: @item.unit_price %>
-
-  <%= form.hidden_field :status %>
 
   <%= form.submit "Submit" %>
 <% end %>
