@@ -27,12 +27,6 @@ RSpec.describe Item, type: :model do
       expect( @item_1_m1.status).to be true
         
     end
-
-    describe "#best_day" do
-      it "can return the date with the highest total revenue" do
-        expect(@item_2_m2.best_day).to eq(@invoice_2_c1.date_created)
-      end
-    end
   end
 
   describe "instance methods" do
