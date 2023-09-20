@@ -79,7 +79,7 @@ def load_test_data
         @invoice_item_2_i2_c1 = @invoice_2_c1.invoice_items.create!(invoice_id: @invoice_2_c1.id, item_id: @item_2_m2.id, quantity: 3, unit_price: @item_2_m2.unit_price, status: 2)
         @invoice_item_3_i2_c1 = @invoice_2_c1.invoice_items.create!(invoice_id: @invoice_2_c1.id, item_id: @item_3_m2.id, quantity: 4, unit_price: @item_3_m2.unit_price, status: 2)
 
-      @invoice_3_c1 = @customer_1.invoices.create!(status: 1)
+      @invoice_3_c1 = @customer_1.invoices.create!(status: 1, created_at: "2012-03-10 00:54:09 UTC")
         @transaction_1_i3_c1 = @invoice_3_c1.transactions.create!(credit_card_number: "21345786", result: 1, credit_card_expiration_date: "04/24")
         @invoice_item_1_i3_c1 = @invoice_3_c1.invoice_items.create!(invoice_id: @invoice_3_c1.id, item_id: @item_1_m5.id, quantity: 200, unit_price: @item_1_m5.unit_price, status: 1)
         @invoice_item_2_i3_c1 = @invoice_3_c1.invoice_items.create!(invoice_id: @invoice_3_c1.id, item_id: @item_2_m2.id, quantity: 1, unit_price: @item_2_m2.unit_price, status: 2)
@@ -228,4 +228,5 @@ def load_test_data
         @invoice_item_1_i1_c9 = @invoice_1_c9.invoice_items.create!(invoice_id: @invoice_1_c9.id, item_id: @item_4_m5.id, quantity: 1, unit_price: @item_4_m5.unit_price, status: 1)
 
     @customer_10 = Customer.create!(first_name: "Julie", last_name: "Musters")
+    
 end

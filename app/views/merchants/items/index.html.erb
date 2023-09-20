@@ -1,6 +1,15 @@
 <h1><%= "#{@merchant.name}" %></h1>
 
-
+<section id="5_most_populer">
+<h2>5 most popular items</h2>
+    <% @merchant.top_5_popular_items.each do |item| %>
+      <%= link_to "#{item.name}", "/merchants/#{@merchant.id}/items/#{item.id}" %> <br>
+      Total Revenue: $<%= "#{item.revenue}"%><br>
+      Top selling date for: <%= "#{item.name}"%><br>
+      <%= "#{item.best_day}"%><br>
+    <% end %>
+    
+</section>
 <section class="enabled_items">
 <h2>Enabled Items</h2>
   <ol>

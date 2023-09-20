@@ -10,7 +10,9 @@ RSpec.describe "Merchant items show page", type: :feature do
     # visit "/merchants/#{@merchant_1.id}/items"
     visit merchant_items_path(@merchant_1)
 
-    click_link "Watch"
+    within (".enabled_items") do 
+      click_link "Watch"
+    end
     # expect(page).to have_current_path("/merchants/#{@merchant_1.id}/items/#{@item_1_m1.id}")
     expect(page).to have_current_path(merchant_item_path(@merchant_1, @item_1_m1.id))
   end

@@ -17,6 +17,14 @@ RSpec.describe Invoice, type: :model do
     it {should validate_presence_of(:status)}
   end
 
+  describe "class methods" do
+    describe ".items_not_yet_shipped" do
+      it "can return invoices with items not yet shipped" do
+        expect(Invoice.items_not_yet_shipped).not_to include(@invoice_2_c1, @invoice_4_c1)
+      end
+    end
+  end
+
   describe "instance methods" do
     describe "#date_created" do
       it "can return the created_at date formatted as 'day_of_week, full_month padded_day, year'" do
