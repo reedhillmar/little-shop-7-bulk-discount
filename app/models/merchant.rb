@@ -69,4 +69,14 @@ class Merchant < ApplicationRecord
   def disabled_items
     items.where(status: false)
   end
+
+# User Story 12
+  def top_5_popular_items
+    items.joins(:invoice_items)
+    .where("invoice_items.status = 0")
+    .group(:id)
+    .select("items.*, SUM(invoice_items.quantity * invoice_items.unit_price) AS revenue")
+    .order("revenue DESC")
+    .limit(5)
+  end
 end
