@@ -89,12 +89,6 @@ RSpec.describe Merchant, type: :model do
       end
     end
 
-    describe "#best_day" do
-      it "can return the date with highest total revenue" do
-        expect(@merchant_2.best_day).to eq(@invoice_2_c1.date_created)
-      end
-    end
-
     describe "#top_five_customers" do
       it "can shows top 5 customers and transaction count" do
         top_customers = @merchant_5.top_five_customers

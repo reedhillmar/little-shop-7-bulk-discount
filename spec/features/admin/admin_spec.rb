@@ -48,7 +48,7 @@ RSpec.describe "admin dashboard" do
     visit "/admin"
 
     expect(page).to have_content("Incompleted Invoices")
-    expect(page).to_not have_content("Invoice ID: #{@invoice_3_c1.id}")
+    expect(page).to_not have_content("Invoice ID: #{@invoice_2_c1.id}")
     expect(page).to have_content("Invoice ID: #{@invoice_1_c1.id}")
   end
 
@@ -56,7 +56,7 @@ RSpec.describe "admin dashboard" do
   it "And each invoice id links to that invoice's admin show page" do
     visit "/admin"
     click_link("#{@invoice_1_c1.id}")
-    # save_and_open_page
+
     expect(current_path).to eq("/admin/invoices/#{@invoice_1_c1.id}")
   end
 end
