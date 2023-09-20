@@ -17,11 +17,11 @@ class Invoice < ApplicationRecord
     customer.full_name
   end
 
-  def total_revenue
+  def total_revenue #this needs to be refactored with AR query
     total_revenue = 0
 
-    invoice_items.each do |item|
-      total_revenue += item.quantity * item.unit_price
+    invoice_items.each do |invoice_item|
+      total_revenue += invoice_item.quantity * invoice_item.unit_price
     end
     
     total_revenue
