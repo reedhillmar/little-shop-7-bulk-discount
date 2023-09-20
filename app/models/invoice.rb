@@ -7,6 +7,13 @@ class Invoice < ApplicationRecord
 
   validates_presence_of :status
 
+  def self.items_not_yet_shipped # model test, plz
+    # require 'pry'; binding.pry
+        joins(:items)
+        .where("invoice_items.status = '0'")
+        .group(:id)
+  end
+
   enum :status, [:in_progress, :completed, :cancelled]
 
   def date_created
