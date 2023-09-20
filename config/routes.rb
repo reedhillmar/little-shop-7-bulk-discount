@@ -22,6 +22,9 @@ Rails.application.routes.draw do
     resource :dashboard, only: [:show], to: 'merchants#show'
   end
   
+  # get "/admin", to: "admin#index"
+  get '/admin', to: "admin#index"
+  
   # Namespace ensures Rails looks for controllers inside an 'admin' folder in controllers directory.
   # Also prefix '/admin' for the URLs
   namespace :admin do
@@ -36,9 +39,6 @@ Rails.application.routes.draw do
     # get "/admin/invoices", to: "admin/invoices#index"
     # get "/admin/invoices/:id", to: "admin/invoices#show"
     # patch "/admin/invoices/:id", to: "admin/invoices#update"
-    resources :invoices, only: [:index, :show, :update]
-
-    # get "/admin", to: "admin#index"
-    get '/', to: "admin#index"
+    resources :invoices, only: [:index, :show, :update]    
   end  
 end
