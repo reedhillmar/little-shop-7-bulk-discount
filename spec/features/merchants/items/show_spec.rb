@@ -8,7 +8,10 @@ RSpec.describe "Merchant items show page", type: :feature do
   # User Story 7
   it "When I click on the name I am taken to that merchant's item's show page " do
     visit "/merchants/#{@merchant_1.id}/items"
+    
+    within (".enabled_items") do 
     click_link "Watch"
+    end
     expect(page).to have_current_path("/merchants/#{@merchant_1.id}/items/#{@item_1_m1.id}")
   end
 

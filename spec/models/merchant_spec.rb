@@ -3,6 +3,14 @@ require "rails_helper"
 RSpec.describe Merchant, type: :model do
   before :each do
     load_test_data
+    @invoice_1_c10 = @customer_10.invoices.create!(status: 1)
+        @transaction_1_i1_c10 = @invoice_1_c10.transactions.create!(credit_card_number: "89123894701", result: 1, credit_card_expiration_date: "08/28")
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_2_m1.id, quantity: 1, unit_price: @item_2_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_3_m1.id, quantity: 1, unit_price: @item_3_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_4_m1.id, quantity: 1, unit_price: @item_4_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_5_m1.id, quantity: 1, unit_price: @item_5_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_6_m1.id, quantity: 1, unit_price: @item_6_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_7_m1.id, quantity: 1, unit_price: @item_7_m1.unit_price, status: 0)
   end
   describe "relationships" do
     it { should have_many(:items) }
@@ -36,7 +44,7 @@ RSpec.describe Merchant, type: :model do
 
     describe ".top_5_by_revenue" do
       it "can return the top 5 merchants by total revenue" do
-        expect(Merchant.top_5_by_revenue).to eq([@merchant_2, @merchant_5, @merchant_1, @merchant_4, @merchant_6])
+        expect(Merchant.top_5_by_revenue).to eq([@merchant_1, @merchant_2, @merchant_5, @merchant_4, @merchant_6])
       end
     end
 
@@ -109,9 +117,22 @@ RSpec.describe Merchant, type: :model do
       end
     end
 
-    describe "#items_ready_to_ship"
-      it "can return an array of items ready to ship" do
-        expect(@merchant_5.items_ready_to_ship).to match_array([@item_1_m5, @item_4_m5, @item_4_m5, @item_6_m5, @item_8_m5, @item_4_m5, @item_4_m5, @item_4_m5])
-      end
+  describe "#items_ready_to_ship"
+    it "can return an array of items ready to ship" do
+      expect(@merchant_5.items_ready_to_ship).to match_array([@item_1_m5, @item_4_m5, @item_4_m5, @item_6_m5, @item_8_m5, @item_4_m5, @item_4_m5, @item_4_m5])
+    end
   end
+
+  describe "top_5_popular_items" do
+    
+      it "can list the top 5 items by revenue" do
+        arr = @merchant_1.top_5_popular_items
+        expect(@merchant_1.top_5_popular_items.length).to eq(5)
+        expect(arr[0]).to eq(@item_6_m1)
+        expect(arr[1]).to eq(@item_1_m1)
+        expect(arr[2]).to eq(@item_2_m1)
+        expect(arr[3]).to eq(@item_3_m1)
+        expect(arr[4]).to eq(@item_7_m1)
+      end
+    end
 end

@@ -3,6 +3,14 @@ require "rails_helper"
 RSpec.describe "Merchant items index", type: :feature do
   before :each do
     load_test_data
+    @invoice_1_c10 = @customer_10.invoices.create!(status: 1)
+        @transaction_1_i1_c10 = @invoice_1_c10.transactions.create!(credit_card_number: "89123894701", result: 1, credit_card_expiration_date: "08/28")
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_2_m1.id, quantity: 1, unit_price: @item_2_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_3_m1.id, quantity: 1, unit_price: @item_3_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_4_m1.id, quantity: 1, unit_price: @item_4_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_5_m1.id, quantity: 1, unit_price: @item_5_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_6_m1.id, quantity: 1, unit_price: @item_6_m1.unit_price, status: 0)
+        @invoice_item_1_i1_c10 = @invoice_1_c10.invoice_items.create!(invoice_id: @invoice_1_c10.id, item_id: @item_7_m1.id, quantity: 1, unit_price: @item_7_m1.unit_price, status: 0)
   end
 
   # User Story 6
@@ -85,5 +93,42 @@ RSpec.describe "Merchant items index", type: :feature do
 
     expect(page).to have_content("Gold Stuff")
     
+  end
+
+  # User Story 12
+  it "I see top 5 customers by revenue" do
+    visit "/merchants/#{@merchant_1.id}/items"
+
+    within ("#5_most_populer") do
+    expect(page).to have_content(@item_6_m1.name)
+    expect(page).to have_content(@item_1_m1.name)
+    expect(page).to have_content(@item_2_m1.name)
+    expect(page).to have_content(@item_3_m1.name)
+    expect(page).to have_content(@item_7_m1.name)
+    click_link "Watch"
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items/#{@item_1_m1.id}")
+    end
+    
+    
+  end
+
+  # User Story 13
+  it "I see a link to create a new item" do
+    visit "/merchants/#{@merchant_1.id}/items"
+    
+    within ("#5_most_populer") do
+    expect(page).to have_content("Top selling date for: #{@item_6_m1.name}")
+    expect(page).to have_content("Wednesday, September 20, 2023")
+    expect(page).to have_content("Top selling date for: #{@item_1_m1.name}")
+    expect(page).to have_content("Wednesday, September 20, 2023")
+    expect(page).to have_content("Top selling date for: #{@item_2_m1.name}")
+    expect(page).to have_content("Wednesday, September 20, 2023")
+    expect(page).to have_content("Top selling date for: #{@item_3_m1.name}")
+    expect(page).to have_content("Wednesday, September 20, 2023")
+    expect(page).to have_content("Top selling date for: #{@item_7_m1.name}")
+    expect(page).to have_content("Wednesday, September 20, 2023")
+    click_link "Watch"
+    expect(current_path).to eq("/merchants/#{@merchant_1.id}/items/#{@item_1_m1.id}")
+    end
   end
 end

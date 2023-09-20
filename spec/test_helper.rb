@@ -228,4 +228,5 @@ def load_test_data
         @invoice_item_1_i1_c9 = @invoice_1_c9.invoice_items.create!(invoice_id: @invoice_1_c9.id, item_id: @item_4_m5.id, quantity: 1, unit_price: @item_4_m5.unit_price, status: 1)
 
     @customer_10 = Customer.create!(first_name: "Julie", last_name: "Musters")
+    
 end
