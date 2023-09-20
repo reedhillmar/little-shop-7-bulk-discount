@@ -34,11 +34,11 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#top_five_customers" do 
-      expect(page).to have_content(@customer_3.first_name)
       expect(page).to have_content(@customer_2.first_name)
-      expect(page).to have_content(@customer_5.first_name)
       expect(page).to have_content(@customer_6.first_name)
       expect(page).to have_content(@customer_1.first_name)
+      expect(page).to have_content(@customer_7.first_name)
+      expect(page).to have_content(@customer_8.first_name)
     end
   end
 
@@ -51,7 +51,6 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     end
   end
 
-  # And next to each Item I see the id of the invoice that ordered my item
   # User Story 4
   it "displays a section called 'Items Ready to Ship and a list of all item names - ordered but not yet shipped" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
@@ -62,22 +61,33 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
     end
   end
 
-   # And each invoice id is a link to my merchant's invoice show page 
    # User Story 4
-   it "displays link of item invoice id" do
+   it "displays link of item invoice id to merchant invoice show page" do
     visit "/merchants/#{@merchant_5.id}/dashboard"
 
     within "#items_ready_to_ship" do
       click_link("#{@invoice_item_1_i3_c1.invoice_id}")
       expect(current_path).to eq("/merchants/#{@merchant_5.id}/invoices/#{@invoice_item_1_i3_c1.invoice_id}")
     end
-  end 
+  end
 
-   xit "shows each " do
-    # within "#items_ready_to_ship" do
-    #   expect(page).to have_link(invoice.id, href: merchant_invoice_path(merchant, invoice))
-     
+  # User Story 5
+  it "displays the date of the invoice creation" do
+    visit "/merchants/#{@merchant_5.id}/dashboard"
 
-    # Invoice: <%= link_to item.invoice_id, merchant_invoice_path(@merchant, item.invoice_id) %>
-   end
+    within "#items_ready_to_ship" do
+      expect(page).to have_content("Items Ready to Ship")
+      expect(page).to have_content("[#{@item_1_m5.format_created_at}] #{@item_1_m5.name} - Invoice ID: #{@invoice_item_1_i3_c1.invoice_id}")
+    end
+  end
+
+  # User Story 5
+  it "displays the list is ordered from oldest to newest" do
+    visit "/merchants/#{@merchant_5.id}/dashboard"
+
+    within "#items_ready_to_ship" do
+      expect(@item_1_m5.name).to appear_before(@item_4_m5.name)
+      expect(@item_4_m5.name).to appear_before(@item_8_m5.name)
+    end
+  end
 end

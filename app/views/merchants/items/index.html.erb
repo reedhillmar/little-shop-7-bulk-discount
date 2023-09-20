@@ -1,0 +1,28 @@
+<h1><%= "#{@merchant.name}" %></h1>
+
+
+<section class="enabled_items">
+<h2>Enabled Items</h2>
+  <ol>
+    <% @merchant.enabled_items.each do |item| %>
+    <div id = "<%= item.id %>">
+      <p><%= link_to "#{item.name}", "/merchants/#{@merchant.id}/items/#{item.id}" %>
+  <%= button_to "Disable", "/merchants/#{@merchant.id}/items/#{item.id}?button_update=true", method: :patch, id: "#{item.id}_button" %></p> 
+  </div>
+    <% end %>
+  </ol>
+</section>
+
+<section class="disabled_items">
+<h2>Disabled Items</h2>
+  <ol>
+    <% @merchant.disabled_items.each do |item| %>
+    <div id = '<%=item.id%>'>
+      <p><%= link_to "#{item.name}", "/merchants/#{@merchant.id}/items/#{item.id}" %>
+      <%= button_to "Enable", "/merchants/#{@merchant.id}/items/#{item.id}?button_update=true", method: :patch, id: "#{item.id}_button" %></p> 
+    </div>
+    <% end %>
+  </ol>
+</section>
+
+<%= link_to "Create New Item", "/merchants/#{@merchant.id}/items/new", method: :get %>

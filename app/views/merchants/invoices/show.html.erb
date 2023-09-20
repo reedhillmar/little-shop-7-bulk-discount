@@ -1,1 +1,19 @@
-<h2> Item Invoices </h2>
+<h2><%= @merchant.name %>'s Items Invoices </h2>
+
+<strong>Total Revenue for Invoice:</strong> <%= @invoice.total_revenue %><br>
+<ul>
+  <% @invoice_items.each do |invoice_item| %>
+    <li>
+      <strong> Item Name: </strong><%= invoice_item.item.name%> <br>
+      <strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br>
+      <strong> Item Price: </strong><%= invoice_item.unit_price%> <br>
+      <strong> Invoice Status: </strong><%= invoice_item.status%> <br>
+      
+      <%= form_with url: "/merchants/#{@merchant.id}/invoices/#{invoice_item.invoice_id}", method: :patch do |f| %>
+        <%= f.hidden_field :invoice_item_id, value: invoice_item.id %> 
+        <%= f.select :status, InvoiceItem.statuses.keys %>
+        <%= f.submit "Update Item Status" %>
+      <% end %>
+    </li>
+  <% end %>
+</ul>

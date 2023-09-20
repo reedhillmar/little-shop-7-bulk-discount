@@ -7,4 +7,8 @@ class InvoiceItem < ApplicationRecord
   validates_presence_of :status
 
   enum :status, [:pending, :packaged, :shipped]
+
+  def item_name
+    item.name
+  end
 end

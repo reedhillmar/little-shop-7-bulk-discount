@@ -4,12 +4,21 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "articles#index"
 
-  get "/merchants/:merchant_id/dashboard", to: "merchants#show"
-  get "/merchants/:merchant_id/items", to: "merchants/items#index"
+  get "/merchants/:merchant_id/items/new", to: "merchants/items#new"
+  post "/merchants/:merchant_id/items", to: "merchants/items#create"
   get "/merchants/:merchant_id/invoices", to: "merchants/invoices#index"
   get "/merchants/:merchant_id/invoices/:invoice_id", to: "merchants/invoices#show", as: :merchant_invoice
+  patch "/merchants/:merchant_id/invoices/:invoice_id", to: "merchants/invoices#update"
+  get "/merchants/:merchant_id/dashboard", to: "merchants#show"
+  get "/merchants/:merchant_id/items", to: "merchants/items#index"
+  get "/merchants/:merchant_id/items/:item_id", to: "merchants/items#show"
+  get "/merchants/:merchant_id/items/:item_id/edit", to: "merchants/items#edit"
+  patch "/merchants/:merchant_id/items/:item_id", to: "merchants/items#update"
+ 
 
   get "/admin", to: "admin#index"
+  get "/admin/invoices/:id", to: "admin/invoices#show"
+  
   get "/admin/merchants", to: "admin/merchants#index"
   get "/admin/merchants/new", to: "admin/merchants#new"
   get "/admin/merchants/:id", to: "admin/merchants#show"
@@ -18,4 +27,6 @@ Rails.application.routes.draw do
   patch "/admin/merchants/:id", to: "admin/merchants#update"
 
   get "/admin/invoices", to: "admin/invoices#index"
+  get "/admin/invoices/:id", to: "admin/invoices#show"
+  patch "/admin/invoices/:id", to: "admin/invoices#update"
 end

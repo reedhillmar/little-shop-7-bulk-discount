@@ -15,8 +15,7 @@
   <ul>
     <% @merchant.items_ready_to_ship.each do |item| %>
       <li>
-         <%# <%= require 'pry';binding.pry %>   
-        <p><%= item.name %> - Invoice ID: <%= link_to "#{item.invoice_id}", merchant_invoice_path(merchant_id: @merchant.id, invoice_id: item.invoice_id)%>  </p>
+        <p>[<%= item.format_created_at %>] <%= item.name %> - Invoice ID: <%= link_to "#{item.invoice_id}", merchant_invoice_path(merchant_id: @merchant.id, invoice_id: item.invoice_id)%>  </p>
       </li>
     <% end %>
   </ul>
