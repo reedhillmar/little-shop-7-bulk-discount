@@ -1,7 +1,6 @@
 require 'csv'
 
 namespace :csv_load do
-  desc "TODO"
   task customers: :environment do
     contents = CSV.open "db/data/customers.csv", headers: true, header_converters: :symbol
     
@@ -18,7 +17,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE customers_id_seq RESTART WITH #{Customer.maximum(:id).to_i+1}")
   end
 
-  desc "TODO"
+  
   task merchants: :environment do
     contents = CSV.open "db/data/merchants.csv", headers: true, header_converters: :symbol
   
@@ -34,7 +33,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE merchants_id_seq RESTART WITH #{Merchant.maximum(:id).to_i+1}")
   end
 
-  desc "TODO"
+  
   task items: :environment do
     contents = CSV.open "db/data/items.csv", headers: true, header_converters: :symbol
 
@@ -53,7 +52,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE items_id_seq RESTART WITH #{Item.maximum(:id).to_i+1}")
   end
 
-  desc "TODO"
+  
   task invoices: :environment do
     contents = CSV.open "db/data/invoices.csv", headers: true, header_converters: :symbol
 
@@ -76,7 +75,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE invoices_id_seq RESTART WITH #{Invoice.maximum(:id).to_i+1}")
   end  
 
-  desc "TODO"
+  
   task invoice_items: :environment do
     contents = CSV.open "db/data/invoice_items.csv", headers: true, header_converters: :symbol
 
@@ -102,7 +101,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE invoice_items_id_seq RESTART WITH #{InvoiceItem.maximum(:id).to_i+1}")
   end
 
-  desc "TODO"
+  
   task transactions: :environment do
     contents = CSV.open "db/data/transactions.csv", headers: true, header_converters: :symbol
 
@@ -125,7 +124,7 @@ namespace :csv_load do
     ActiveRecord::Base.connection.execute("ALTER SEQUENCE transactions_id_seq RESTART WITH #{Transaction.maximum(:id).to_i+1}")
   end
 
-  desc "TODO"
+  
   task all: [:customers, :merchants, :items, :invoices, :invoice_items, :transactions] do
   end
 
