@@ -26,8 +26,8 @@ class Admin::MerchantsController < ApplicationController
     merchant = Merchant.find(params[:id])
     if params[:button] == nil
       if merchant.update(merchant_params)
-        redirect_to "/admin/merchants/#{params[:id]}"
         flash[:notice] = "Merchant name has been updated"
+        redirect_to "/admin/merchants/#{params[:id]}"
       else
         redirect_to "/admin/merchants/#{params[:id]}/edit"
         flash[:alert] = "Error: #{error_message(merchant.errors)}"

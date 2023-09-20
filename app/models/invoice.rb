@@ -7,14 +7,13 @@ class Invoice < ApplicationRecord
 
   validates_presence_of :status
 
-  def self.items_not_yet_shipped # model test, plz
-    # require 'pry'; binding.pry
+  enum :status, [:in_progress, :completed, :cancelled]
+
+  def self.items_not_yet_shipped
         joins(:items)
-        .where("invoice_items.status = '0'")
+        .where("invoice_items.status != '2'")
         .group(:id)
   end
-
-  enum :status, [:in_progress, :completed, :cancelled]
 
   def date_created
     created_at.strftime("%A, %B %e, %Y")
@@ -24,13 +23,7 @@ class Invoice < ApplicationRecord
     customer.full_name
   end
 
-  def total_revenue #this needs to be refactored with AR query
-    total_revenue = 0
-
-    invoice_items.each do |invoice_item|
-      total_revenue += invoice_item.quantity * invoice_item.unit_price
-    end
-    
-    total_revenue
+  def total_revenue
+    invoice_items.sum("quantity * unit_price")
   end
 end
