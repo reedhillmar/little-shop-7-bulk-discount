@@ -11,7 +11,6 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
     visit merchant_invoice_path(@merchant_5, @invoice_3_c6)
 
     expect(page).to_not have_content(@item_1_m3.name)
-    save_and_open_page
     expect(page).to have_content(@item_6_m5.name)
     expect(page).to have_content( @invoice_item_1_i3_c6.quantity)
     expect(page).to have_content(@item_6_m5.unit_price)
