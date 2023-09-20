@@ -13,6 +13,7 @@ class Invoice < ApplicationRecord
         joins(:items)
         .where("invoice_items.status != '2'")
         .group(:id)
+        .order("invoices.created_at ASC")
   end
 
   def date_created
@@ -25,5 +26,9 @@ class Invoice < ApplicationRecord
 
   def total_revenue
     invoice_items.sum("quantity * unit_price")
+  end
+
+  def format_created_at
+    self.created_at.strftime("%A, %B %d, %Y")
   end
 end

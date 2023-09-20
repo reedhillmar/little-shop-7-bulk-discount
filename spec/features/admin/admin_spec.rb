@@ -48,7 +48,7 @@ RSpec.describe "admin dashboard" do
     visit "/admin"
 
     expect(page).to have_content("Incompleted Invoices")
-    expect(page).to_not have_content("Invoice ID: #{@invoice_2_c1.id}")
+    expect(page).to_not have_content("Invoice ID: #{@invoice_4_c1.id}")
     expect(page).to have_content("Invoice ID: #{@invoice_1_c1.id}")
   end
 
@@ -58,5 +58,22 @@ RSpec.describe "admin dashboard" do
     click_link("#{@invoice_1_c1.id}")
 
     expect(current_path).to eq("/admin/invoices/#{@invoice_1_c1.id}")
+  end
+
+  # US 23
+  it "In the section for 'Incomplete Invoices',
+  Next to each invoice id I see the date that the invoice was created
+  And I see the date formatted like 'Monday, July 18, 2019'" do
+    visit "/admin"
+
+  #  save_and_open_page
+    expect(page).to have_content("Date Created: #{@invoice_1_c1.date_created} - Invoice ID: #{@invoice_1_c1.id}")
+  end
+
+  # US 23
+  it "And I see that the list is ordered from oldest to newest" do
+    visit "/admin"
+    # save_and_open_page
+    expect(@invoice_2_c1.date_created).to appear_before(@invoice_1_c1.date_created)
   end
 end
