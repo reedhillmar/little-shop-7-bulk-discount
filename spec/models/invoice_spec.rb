@@ -17,15 +17,15 @@ RSpec.describe Invoice, type: :model do
     it {should validate_presence_of(:status)}
   end
 
-  describe "isntance methods" do
+  describe "instance methods" do
     describe "#date_created" do
-      it "can retrun the created_at date formatted as 'day_of_week, full_month padded_day, year'" do
+      it "can return the created_at date formatted as 'day_of_week, full_month padded_day, year'" do
         expect(@invoice_2_c1.date_created).to eq("Saturday, March 10, 2012")
       end
     end
 
     describe "#customer_name" do
-      it "can return the full name of teh customer" do
+      it "can return the full name of the customer" do
         expect(@invoice_2_c1.customer_name).to eq("Bob Dugles")
       end
     end

@@ -4,15 +4,15 @@ class Merchants::ItemsController < ApplicationController
   end
 
   def show
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
   end
 
   def edit
-    @item = Item.find(params[:item_id])
+    @item = Item.find(params[:id])
   end
   
   def update
-  @item = Item.find(params[:item_id])
+  @item = Item.find(params[:id])
 
   if params[:button_update] == "true"
     @item.update_status
