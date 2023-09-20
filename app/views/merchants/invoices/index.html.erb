@@ -2,7 +2,8 @@
 
 <ul>
   <% @merchant.invoices.each do |invoice| %>
-    <li> Invoice ID: <%= link_to "Invoice ID: #{invoice.id}", merchant_invoice_path(merchant_id: @merchant.id, invoice_id: invoice.id) %> </li>
+    <%# <li> Invoice ID: <%= link_to "Invoice ID: #{invoice.id}", merchant_invoice_path(merchant_id: @merchant.id, invoice_id: invoice.id) </li> %> 
+    <%= link_to "Invoice ID: #{invoice.id}", merchant_invoice_path(merchant_id: @merchant.id, id: invoice.id) %>
     <li> Invoice Status: <%= invoice.status%> </li>
     <li> Creation Date: <%= invoice.date_created%> </li>
     <li> Customer Name: <%= invoice.customer_name%> </li>
