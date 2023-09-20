@@ -79,8 +79,7 @@ RSpec.describe "admin dashboard" do
     visit "/admin"
 
     within "#incompleted_invoices" do
-     expect(@invoice_2_c1.date_created).to appear_before(@invoice_1_c1.date_created)
-    # save_and_open_page
+     expect(@invoice_3_c1.date_created).to appear_before(@invoice_1_c1.date_created)
     end
   end
 end
