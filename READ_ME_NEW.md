@@ -1,6 +1,10 @@
-### Overview
+### Overview  
 
+In this project, we created a basic web interface that allows merchants to interact with their items, customers, invoices and transactions. Through this web interface, merchant are able to view sorted lists such as Top Five Customers, Items Ready to be Shipped, and Invoices sorted by most recent. This application also allows administrators to managed merchants, items, customers and invoices.
 
+To achieve this, we completed all 36 user stories to build out functionality for merchant and item creation, returning various data using Active Record queries, and various means of data manipulation.
+
+If another developer were to work on this application in the future, it would be most beneficial to add styling to the application pages, add linking for better web page navigation, build in security features such as Oauth and add a customer interface.
 
 ### DTR
 - [DTR September 11, 2023](https://docs.google.com/document/d/1wZQGC192zhxWqzl1kNELGh7nnDWVAxdPcPMHRXT90yg/edit?usp=sharing)
