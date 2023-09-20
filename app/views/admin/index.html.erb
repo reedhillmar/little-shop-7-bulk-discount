@@ -9,6 +9,6 @@
 <% end %>
 
 <h1>Incompleted Invoices</h1>
-<% @items_to_ship.each do |item| %>
-  <p>Invoice ID: <%= item.id %></p>
+<% @invoices_to_ship.each do |invoice| %>
+  <p>Invoice ID: <%= link_to "#{invoice.id}", "/admin/invoices/#{invoice.id}" %></p>
 <% end %>
