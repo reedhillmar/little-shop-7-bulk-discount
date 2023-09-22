@@ -102,4 +102,26 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
       expect(@item_4_m5.name).to appear_before(@item_8_m5.name)
     end
   end
+
+  # BD_US1
+  it "Then I see a link to view all my discounts" do
+    visit merchant_dashboard_path(@merchant_5)
+
+      click_link "View All Discounts"
+
+    expect(current_path).to eq(merchant_discount_path(@merchant_5))
+
+    within "#discounts" do
+      expect(page).not_to have_content(@m1_discount1.percentage_discount)
+      expect(page).not_to have_content(@m1_discount1.quantity_threshold)
+
+      within "#discount-#{@m5_discount1.id}" do
+        expect(page).to have_content(@m5_discount1.percentage_discount)
+        expect(page).to have_content(@m5_discount1.quantity_threshold)
+        click_link "#{@m5_discount1.event_name}"
+      end
+    end
+    
+    expect(current_path).to eq(merchant_discount_path(@m5_discount1))
+  end
 end
