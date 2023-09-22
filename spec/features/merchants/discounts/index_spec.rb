@@ -13,9 +13,9 @@ RSpec.describe "As a merchant when I visit the bulk discounts index" do
 
     expect(current_path).to eq(new_merchant_discount_path(@merchant_5))
 
-    fill_in :event_name, with: "It's Fall AF Out Here"
-    fill_in :percentage_discount, with: 99
-    fill_in :quantity_threshold, with: 1
+    fill_in :discount_event_name, with: "It's Fall AF Out Here"
+    fill_in :discount_percentage_discount, with: 99
+    fill_in :discount_quantity_threshold, with: 1
 
     click_button "Submit"
 
