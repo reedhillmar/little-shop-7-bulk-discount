@@ -13,6 +13,8 @@ def load_test_data
       @item_9_m1 = @merchant_1.items.create!(name: "Another Ring", description: "is this the one", unit_price: 780, status: false)
       @item_10_m1 = @merchant_1.items.create!(name: "Another watch", description: "Just like the first but cheaper", unit_price: 599, status: false)
 
+      @m1_discount1 = @merchant_1.discounts.create!(event_name: "Five-Off Fridays", percentage_discount: 5, quantity_threshold: 5)
+
     @merchant_2 = Merchant.create!(name: "Carls Cars")
       #merchant_2 items
       @item_1_m2 = @merchant_2.items.create!(name: "Truck", description: "Mud Stuff", unit_price: 6000)
@@ -54,6 +56,9 @@ def load_test_data
       @item_6_m5 = @merchant_5.items.create!(name: "Wentletrap", description: "Spiral White", unit_price: 99)
       @item_7_m5 = @merchant_5.items.create!(name: "Clam", description: "Freshwater", unit_price: 5)
       @item_8_m5 = @merchant_5.items.create!(name: "Scallop", description: "Iconic", unit_price: 30)
+
+      #merchant_5 discounts
+      @m5_discount1 = @merchant_5.discounts.create!(event_name: "Summer of Savings", percentage_discount: 25, quantity_threshold: 10)
 
     @merchant_6 = Merchant.create!(name: "Dan's D&D Doohickies")
       #merchant_6 items
