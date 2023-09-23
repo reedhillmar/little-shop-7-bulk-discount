@@ -1,0 +1,10 @@
+<h2>Edit Discount</h2>
+<%= form_with model: @discount, url: "/merchants/#{@merchant.id}/discounts/#{@discount.id}", data: {turbo: false} do |f| %>
+  <%= f.label :event_name %>
+  <%= f.text_field :event_name %>
+  <%= f.label :percentage_discount %>
+  <%= f.number_field :percentage_discount %>
+  <%= f.label :quantity_threshold %>
+  <%= f.number_field :quantity_threshold %>
+  <%= f.submit "Submit" %>
+<% end %>

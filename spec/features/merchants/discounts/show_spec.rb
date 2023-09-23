@@ -23,11 +23,11 @@ RSpec.describe "As a merchant when I visit the bulk discounts show page" do
 
     click_link "Edit Discount"
 
-    expect(current_path).to eq(edit_merchant_discount(@m5_discount1))
+    expect(current_path).to eq(edit_merchant_discount_path(@merchant_5, @m5_discount1))
 
-    expect(page).to have_content(@m5_discount1.event_name)
-    expect(page).to have_content(@m5_discount1.percentage_discount)
-    expect(page).to have_content(@m5_discount1.quantity_threshold)
+    expect(page).to have_field(:discount_event_name, with: @m5_discount1.event_name)
+    expect(page).to have_field(:discount_percentage_discount, with: @m5_discount1.percentage_discount)
+    expect(page).to have_field(:discount_quantity_threshold, with: @m5_discount1.quantity_threshold)
 
     fill_in :discount_event_name, with: "It's Fall AF Out Here"
     fill_in :discount_percentage_discount, with: 99
@@ -45,7 +45,7 @@ RSpec.describe "As a merchant when I visit the bulk discounts show page" do
 
 
     expect(page).to have_content(@m5_discount1.event_name)
-    
+
     within "#discount-details" do
       expect(page).to have_content("Percentage Discount: #{@m5_discount1.percentage_discount}")
       expect(page).to have_content("Quantity Threshold: #{@m5_discount1.quantity_threshold}")
