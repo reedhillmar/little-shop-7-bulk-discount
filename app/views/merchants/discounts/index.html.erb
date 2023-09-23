@@ -2,9 +2,10 @@
 <div id="discounts">
   <%= @merchant.discounts.each do |discount| %>
     <div id="discount-<%= discount.id %>">
-      <p><%= link_to "#{discount.event_name}", "/merchants/#{@merchant.id}/discounts/#{discount.id}" %></p>
+      <h4><%= link_to "#{discount.event_name}", "/merchants/#{@merchant.id}/discounts/#{discount.id}" %></h4>
       <p><strong>Percentage Discount:</strong> <%= discount.percentage_discount %></p>
       <p><strong>Quantity Threshold:</strong> <%= discount.quantity_threshold %></p>
+      <%= button_to "Delete Discount", "/merchants/#{@merchant.id}/discounts/#{discount.id}", method: :delete, data: {turbo: false} %>
     </div>
   <% end %>
 </div>

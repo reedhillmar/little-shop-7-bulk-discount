@@ -29,4 +29,21 @@ RSpec.describe "As a merchant when I visit the bulk discounts index" do
       end
     end
   end
+
+  #BD_US3
+  it "next to each bulk discount I see a button to delete it" do
+    visit merchant_discounts_path(@merchant_5)
+
+    within "#discounts" do
+      within "#discount-#{@m5_discount1.id}" do
+        click_button "Delete Discount"
+      end
+    end
+
+    expect(current_path).to eq(merchant_discounts_path(@merchant_5))
+
+    within "#discounts" do
+      expect(page).not_to have_content(@m5_discount1.event_name)
+    end
+  end
 end
