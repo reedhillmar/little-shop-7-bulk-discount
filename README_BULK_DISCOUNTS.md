@@ -136,6 +136,8 @@ Then next to each bulk discount I see a button to delete it
 When I click this button
 Then I am redirected back to the bulk discounts index page
 And I no longer see the discount listed
+
+[x] done
 ```
 ```
 4: Merchant Bulk Discount Show
