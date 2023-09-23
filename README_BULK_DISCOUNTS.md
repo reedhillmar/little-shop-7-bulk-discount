@@ -145,6 +145,8 @@ And I no longer see the discount listed
 As a merchant
 When I visit my bulk discount show page
 Then I see the bulk discount's quantity threshold and percentage discount
+
+[x] done
 ```
 ```
 5: Merchant Bulk Discount Edit
@@ -158,6 +160,8 @@ And I see that the discounts current attributes are pre-poluated in the form
 When I change any/all of the information and click submit
 Then I am redirected to the bulk discount's show page
 And I see that the discount's attributes have been updated
+
+[x] done
 ```
 ```
 6: Merchant Invoice Show Page: Total Revenue and Discounted Revenue

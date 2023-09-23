@@ -4,6 +4,7 @@ class Merchants::DiscountsController < ApplicationController
   end
 
   def show
+    @merchant = Merchant.find(params[:merchant_id])
     @discount = Discount.find(params[:id])
   end
 
@@ -22,6 +23,20 @@ class Merchants::DiscountsController < ApplicationController
     merchant = Merchant.find(params[:merchant_id])
     Discount.find(params[:id]).destroy
     redirect_to merchant_discounts_path(merchant)
+  end
+
+  def edit
+    @merchant = Merchant.find(params[:merchant_id])
+    @discount = Discount.find(params[:id])
+  end
+
+  def update
+    @merchant = Merchant.find(params[:merchant_id])
+    @discount = Discount.find(params[:id])
+
+    if @discount.update(discount_params)
+      redirect_to "/merchants/#{@merchant.id}/discounts/#{@discount.id}"
+    end
   end
 
   private
