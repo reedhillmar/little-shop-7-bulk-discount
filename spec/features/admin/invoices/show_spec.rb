@@ -60,4 +60,19 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
 
     expect(@invoice_1_c1.status).to eq("completed")
   end
+
+  # BD_US8
+  it "I see the total revenue from this invoice (not including discounts) and I see the total discounted revenue from this invoice which includes bulk discounts in the calculation" do
+    visit admin_invoice_path(@invoice_1_c5)
+
+    within("#revenue") do
+      within("#total_revenue") do
+        expect(page).to have_content("Total Revenue: #{@invoice_1_c5.total_revenue}")
+      end
+
+      within("#discounted_revenue") do
+        expect(page).to have_content("Discounted Revenue: #{@invoice_1_c5.discounted_revenue}")
+      end
+    end
+  end
 end
