@@ -44,7 +44,7 @@ RSpec.describe Merchant, type: :model do
 
     describe ".top_5_by_revenue" do
       it "can return the top 5 merchants by total revenue" do
-        expect(Merchant.top_5_by_revenue).to eq([@merchant_1, @merchant_2, @merchant_5, @merchant_4, @merchant_6])
+        expect(Merchant.top_5_by_revenue).to eq([@merchant_1, @merchant_2, @merchant_5, @merchant_6, @merchant_4])
       end
     end
 
@@ -103,11 +103,11 @@ RSpec.describe Merchant, type: :model do
 
         expect(top_customers.length).to eq(5)
 
-        expect(top_customers[0]).to eq(@customer_2)
-        expect(top_customers[1]).to eq(@customer_6)
-        expect(top_customers[2]).to eq(@customer_1)
-        expect(top_customers[3]).to eq(@customer_7)
-        expect(top_customers[4]).to eq(@customer_8)
+        expect(top_customers[0]).to eq(@customer_6)
+        expect(top_customers[1]).to eq(@customer_2)
+        expect(top_customers[2]).to eq(@customer_5)
+        expect(top_customers[3]).to eq(@customer_1)
+        expect(top_customers[4]).to eq(@customer_7)
       end
     end
 

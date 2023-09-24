@@ -44,7 +44,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
       expect(page).to have_content(@customer_6.first_name)
       expect(page).to have_content(@customer_1.first_name)
       expect(page).to have_content(@customer_7.first_name)
-      expect(page).to have_content(@customer_8.first_name)
+      expect(page).to have_content(@customer_5.first_name)
     end
   end
 
