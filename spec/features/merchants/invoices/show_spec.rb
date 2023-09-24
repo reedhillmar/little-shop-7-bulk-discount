@@ -40,4 +40,22 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
 
     expect(@invoice_item_1_i2_c6.status).to eq("shipped")
   end
+
+  
+  # BD_US6
+  it "I visit my merchant invoice show page
+  Then I see the total revenue for my merchant from this invoice (not including discounts)
+  And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation" do
+    visit merchant_invoice_path(@merchant_5, @invoice_1_c5)
+
+    within "#revenue" do
+      within "#total_revenue" do
+        expect(page).to have_content("Total Revenue for Invoice: #{@invoice_1_c5.total_revenue}")
+      end
+
+      within "#discounted_revenue" do
+        expect(page).to have_content("Discounted Revenue for Invoice: #{@invoice_1_c5.discounted_revenue}")
+      end
+    end
+  end
 end

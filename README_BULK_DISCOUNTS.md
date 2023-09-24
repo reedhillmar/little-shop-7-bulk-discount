@@ -170,6 +170,8 @@ As a merchant
 When I visit my merchant invoice show page
 Then I see the total revenue for my merchant from this invoice (not including discounts)
 And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation
+
+[x] done
 ```
 ```
 7: Merchant Invoice Show Page: Link to applied discounts

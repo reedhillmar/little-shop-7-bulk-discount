@@ -128,9 +128,9 @@ RSpec.describe "As a visitor when I visit 'admin/merchants'" do
         expect(page).to have_link("#{@merchant_2.name}")
         expect(page).to have_content("Total Revenue: #{@top_5_merchants.first.revenue}")
       end
-      
-      within("#top_merchant-#{@merchant_6.id}") do
-        expect(page).to have_link("#{@merchant_6.name}")
+
+      within("#top_merchant-#{@merchant_4.id}") do
+        expect(page).to have_link("#{@merchant_4.name}")
         expect(page).to have_content("Total Revenue: #{@top_5_merchants.last.revenue}")
       end
     end

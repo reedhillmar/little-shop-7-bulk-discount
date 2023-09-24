@@ -59,6 +59,8 @@ def load_test_data
 
       #merchant_5 discounts
       @m5_discount1 = @merchant_5.discounts.create!(event_name: "Summer of Savings", percentage_discount: 25, quantity_threshold: 10)
+      @m5_discount2 = @merchant_5.discounts.create!(event_name: "It's Fall AF Out Here", percentage_discount: 15, quantity_threshold: 15)
+      @m5_discount3 = @merchant_5.discounts.create!(event_name: "We're Going Under", percentage_discount: 90, quantity_threshold: 100)
 
     @merchant_6 = Merchant.create!(name: "Dan's D&D Doohickies")
       #merchant_6 items
@@ -174,7 +176,8 @@ def load_test_data
       @invoice_1_c5 = @customer_5.invoices.create!(status: 2)
         @transaction_1_i1_c5 = @invoice_1_c5.transactions.create!(credit_card_number: "823479832", result: 0, credit_card_expiration_date: "11/23")
         @transaction_2_i1_c5 = @invoice_1_c5.transactions.create!(credit_card_number: "823479832", result: 1, credit_card_expiration_date: "11/23")
-        @invoice_item_1_i1_c5 = @invoice_1_c5.invoice_items.create!(invoice_id: @invoice_1_c5.id, item_id: @item_1_m4.id, quantity: 1, unit_price: @item_1_m4.unit_price, status: 0)
+        @invoice_item_1_i1_c5 = @invoice_1_c5.invoice_items.create!(invoice_id: @invoice_1_c5.id, item_id: @item_1_m5.id, quantity: 1, unit_price: @item_1_m5.unit_price, status: 0)
+        @invoice_item_2_i1_c5 = @invoice_1_c5.invoice_items.create!(invoice_id: @invoice_1_c5.id, item_id: @item_2_m5.id, quantity: 100, unit_price: @item_2_m5.unit_price, status: 0)
 
       @invoice_2_c5 = @customer_5.invoices.create!(status: 1)
         @transaction_1_i2_c5 = @invoice_2_c5.transactions.create!(credit_card_number: "123489723", result: 1, credit_card_expiration_date: "04/24")
