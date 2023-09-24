@@ -23,7 +23,7 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
     # visit "/merchants/#{@merchant_5.id}/invoices/#{@invoice_3_c6.id}"
     visit merchant_invoice_path(@merchant_5, @invoice_3_c6)
 
-    expect(page).to have_content("Total Revenue for Invoice: #{@invoice_3_c6.total_revenue}")
+    expect(page).to have_content("Total Revenue for Invoice: #{@invoice_3_c6.invoice_items.total_revenue}")
   end
 
   # User Story 18
@@ -48,13 +48,15 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
   And I see the total discounted revenue for my merchant from this invoice which includes bulk discounts in the calculation" do
     visit merchant_invoice_path(@merchant_5, @invoice_1_c5)
 
+    @invoice_items = InvoiceItem.joins(:item).where(invoice_id: @invoice_1_c5.id, items: { merchant_id: @merchant_5.id })
+
     within "#revenue" do
       within "#total_revenue" do
-        expect(page).to have_content("Total Revenue for Invoice: #{@invoice_1_c5.total_revenue}")
+        expect(page).to have_content("Total Revenue for Invoice: #{@invoice_items.total_revenue}")
       end
 
       within "#discounted_revenue" do
-        expect(page).to have_content("Discounted Revenue for Invoice: #{@invoice_1_c5.discounted_revenue}")
+        expect(page).to have_content("Discounted Revenue for Invoice: #{@invoice_items.discounted_revenue}")
       end
     end
   end

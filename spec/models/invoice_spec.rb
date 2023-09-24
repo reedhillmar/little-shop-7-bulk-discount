@@ -40,7 +40,7 @@ RSpec.describe Invoice, type: :model do
 
     describe "#total_revenue" do
       it "can return the total revenue of the invoice" do
-        expect(@invoice_2_c1.total_revenue).to eq(74141)
+        expect(@invoice_2_c1.invoice_items.total_revenue).to eq(74141)
       end
     end
 

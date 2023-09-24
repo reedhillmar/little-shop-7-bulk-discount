@@ -40,7 +40,7 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
     visit admin_invoice_path(@invoice_1_c1)
 
     within("#total_revenue") do
-      expect(page).to have_content("Total Revenue: #{@invoice_1_c1.total_revenue}")
+      expect(page).to have_content("Total Revenue: #{@invoice_1_c1.invoice_items.total_revenue}")
     end
   end
 
@@ -67,11 +67,11 @@ RSpec.describe "As a visitor when I visit 'admin/invoices/:id'" do
 
     within("#revenue") do
       within("#total_revenue") do
-        expect(page).to have_content("Total Revenue: #{@invoice_1_c5.total_revenue}")
+        expect(page).to have_content("Total Revenue: #{@invoice_1_c5.invoice_items.total_revenue}")
       end
 
       within("#discounted_revenue") do
-        expect(page).to have_content("Discounted Revenue: #{@invoice_1_c5.discounted_revenue}")
+        expect(page).to have_content("Discounted Revenue: #{@invoice_1_c5.invoice_items.discounted_revenue}")
       end
     end
   end

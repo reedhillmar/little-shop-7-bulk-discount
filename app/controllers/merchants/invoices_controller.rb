@@ -5,10 +5,10 @@ class Merchants::InvoicesController < ApplicationController
   end
 
   def show
-    # require 'pry';binding.pry
     @merchant = Merchant.find(params[:merchant_id])
     @invoice = Invoice.find(params[:id])
     @invoice_items = InvoiceItem.joins(:item).where(invoice_id: params[:id], items: { merchant_id: @merchant.id })
+    # require 'pry';binding.pry
   end
 
   def update

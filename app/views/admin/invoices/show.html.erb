@@ -24,9 +24,9 @@
 <br>
 <div id="revenue">
   <div id="total_revenue">
-    <strong>Total Revenue:</strong> <%= @invoice.total_revenue %>
+    <strong>Total Revenue:</strong> <%= @invoice.invoice_items.total_revenue %>
   </div>
   <div id="discounted_revenue">
-    <strong>Discounted Revenue:</strong> <%= @invoice.discounted_revenue %>
+    <strong>Discounted Revenue:</strong> <%= @invoice.invoice_items.discounted_revenue %>
   </div>
 </div>
