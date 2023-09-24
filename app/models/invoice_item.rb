@@ -14,14 +14,11 @@ class InvoiceItem < ApplicationRecord
   end
 
   def best_discount
-    best_discount = 0
-
     item.discounts.each do |discount|
       if quantity >= discount.quantity_threshold
-        best_discount = discount.percentage_discount if discount.percentage_discount > best_discount
+        update(discount: discount.percentage_discount) if discount.percentage_discount > self.discount
+        update(discount_event_name: discount.event_name)
       end
     end
-    
-    best_discount
   end
 end
