@@ -9,18 +9,20 @@
 </div>
 <ul>
   <% @invoice_items.each do |invoice_item| %>
-    <li>
-      <strong> Item Name: </strong><%= invoice_item.item.name%> <br>
-      <strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br>
-      <strong> Item Price: </strong><%= invoice_item.unit_price%> <br>
-      <strong> Invoice Status: </strong><%= invoice_item.status%> <br>
-      
-      <%# <%= form_with url: "/merchants/#{@merchant.id}/invoices/#{invoice_item.invoice_id}", method: :patch do |f| %> 
-      <%= form_with url: merchant_invoice_path(@merchant, invoice_item.invoice_id), method: :patch do |f| %>
-        <%= f.hidden_field :invoice_item_id, value: invoice_item.id %> 
-        <%= f.select :status, InvoiceItem.statuses.keys %>
-        <%= f.submit "Update Item Status" %>
-      <% end %>
-    </li>
+    <div id="invoice_item-<%= invoice_item.id %>">
+      <li>
+        <strong> Item Name: </strong><%= invoice_item.item.name%> <br>
+        <strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br>
+        <strong> Item Price: </strong><%= invoice_item.unit_price%> <br>
+        <strong> Invoice Status: </strong><%= invoice_item.status%> <br>
+        
+        <%# <%= form_with url: "/merchants/#{@merchant.id}/invoices/#{invoice_item.invoice_id}", method: :patch do |f| %> 
+        <%= form_with url: merchant_invoice_path(@merchant, invoice_item.invoice_id), method: :patch do |f| %>
+          <%= f.hidden_field :invoice_item_id, value: invoice_item.id %> 
+          <%= f.select :status, InvoiceItem.statuses.keys %>
+          <%= f.submit "Update Item Status" %>
+        <% end %>
+      </li>
+    </div>
   <% end %>
 </ul>
