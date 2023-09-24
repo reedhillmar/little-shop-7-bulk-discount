@@ -60,7 +60,7 @@ def load_test_data
       #merchant_5 discounts
       @m5_discount1 = @merchant_5.discounts.create!(event_name: "Summer of Savings", percentage_discount: 25, quantity_threshold: 10)
       @m5_discount2 = @merchant_5.discounts.create!(event_name: "It's Fall AF Out Here", percentage_discount: 15, quantity_threshold: 15)
-      @m5_discount3 = @merchant_5.discounts.create!(event_name: "We're Going Under", percentage_discount: 90, quantity_threshold: 100)
+      @m5_discount3 = @merchant_5.discounts.create!(event_name: "We're Going Under (The Sea)", percentage_discount: 90, quantity_threshold: 100)
 
     @merchant_6 = Merchant.create!(name: "Dan's D&D Doohickies")
       #merchant_6 items

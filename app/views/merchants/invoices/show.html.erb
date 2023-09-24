@@ -9,18 +9,25 @@
 </div>
 <ul>
   <% @invoice_items.each do |invoice_item| %>
-    <li>
-      <strong> Item Name: </strong><%= invoice_item.item.name%> <br>
-      <strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br>
-      <strong> Item Price: </strong><%= invoice_item.unit_price%> <br>
-      <strong> Invoice Status: </strong><%= invoice_item.status%> <br>
-      
-      <%# <%= form_with url: "/merchants/#{@merchant.id}/invoices/#{invoice_item.invoice_id}", method: :patch do |f| %> 
-      <%= form_with url: merchant_invoice_path(@merchant, invoice_item.invoice_id), method: :patch do |f| %>
-        <%= f.hidden_field :invoice_item_id, value: invoice_item.id %> 
-        <%= f.select :status, InvoiceItem.statuses.keys %>
-        <%= f.submit "Update Item Status" %>
-      <% end %>
-    </li>
+    <div id="invoice_item-<%= invoice_item.id %>">
+      <li>
+        <p><strong> Item Name: </strong><%= invoice_item.item.name%> <br></p>
+        <p><strong> Item Quantity Ordered: </strong><%= invoice_item.quantity%> <br></p>
+        <p><strong> Item Price: </strong><%= invoice_item.unit_price%> <br></p>
+        <p><strong> Invoice Status: </strong><%= invoice_item.status%> <br></p>
+        <p><strong> Bulk Discount: </strong><% if invoice_item.discount_event_name == "No Discount Applied" %>
+          <%= invoice_item.discount_event_name %>
+        <% else %>
+          <%= link_to "#{invoice_item.discount_event_name}", "/merchants/#{Item.find(invoice_item.item_id).merchant.id}/discounts/#{Discount.where(event_name: invoice_item.discount_event_name)[0].id}"%>
+        <% end %></p>
+        
+        <%# <%= form_with url: "/merchants/#{@merchant.id}/invoices/#{invoice_item.invoice_id}", method: :patch do |f| %> 
+        <%= form_with url: merchant_invoice_path(@merchant, invoice_item.invoice_id), method: :patch do |f| %>
+          <%= f.hidden_field :invoice_item_id, value: invoice_item.id %> 
+          <%= f.select :status, InvoiceItem.statuses.keys %>
+          <%= f.submit "Update Item Status" %>
+        <% end %>
+      </li>
+    </div>
   <% end %>
 </ul>

@@ -30,31 +30,8 @@ class Invoice < ApplicationRecord
   end
 
   def discounted_revenue
-  # for each invoice_item
-    # do any discounts apply?
-      # no
-        # no discount
-      # yes
-        # does more than one discount apply?
-          # no
-            # use discount
-          # yes
-            # use highest applicable discount
-              # see examples
-
-# invoice.items.joins(:discounts).select("sum((invoice_items.quantity * invoice_items.unit_price) * ((100 - discounts.percentage_discount) / 100))")
-
-# invoice.items.joins(:discounts).select("")
-# select("sum((invoice_items.quantity * invoice_items.unit_price) * ((100 - discounts.percentage_discount) / 100))")
-
-  # universal revenue calculation
-    # (quantity * unit_price) * ((100 - highest percentage discount item qualifies for) / 100)
-
-    # invoice_items.sum do |item|
-    #   require 'pry';binding.pry
-    # end
     invoice_items.each do |invoice_item|
-      invoice_item.update(discount: invoice_item.best_discount)
+      invoice_item.best_discount
     end
 
     invoice_items.sum("(invoice_items.quantity * invoice_items.unit_price) * ((100 - invoice_items.discount) / 100.0)").to_i

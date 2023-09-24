@@ -107,7 +107,7 @@ RSpec.describe "Merchant Dashboard show page", type: :feature do
   it "Then I see a link to view all my discounts" do
     visit merchant_dashboard_path(@merchant_5)
 
-      click_link "View All Discounts"
+    click_link "View All Discounts"
 
     expect(current_path).to eq(merchant_discounts_path(@merchant_5))
 
