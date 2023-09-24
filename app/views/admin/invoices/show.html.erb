@@ -22,6 +22,11 @@
   <% end %>
 </div>
 <br>
-<div id="total_revenue">
-  <p><strong>Total Revenue:</strong> <%= @invoice.total_revenue %></p>
+<div id="revenue">
+  <div id="total_revenue">
+    <strong>Total Revenue:</strong> <%= @invoice.total_revenue %>
+  </div>
+  <div id="discounted_revenue">
+    <strong>Discounted Revenue:</strong> <%= @invoice.discounted_revenue %>
+  </div>
 </div>

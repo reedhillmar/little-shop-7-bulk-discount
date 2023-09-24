@@ -62,7 +62,7 @@ RSpec.describe "Merchant Invoice Show Page", type: :feature do
   # BD_US7
   it "next to each invoice item I see a link to the show page for the bulk discount that was applied (if any)" do
     visit merchant_invoice_path(@merchant_5, @invoice_1_c5)
-save_and_open_page
+
     within("#invoice_item-#{@invoice_item_1_i1_c5.id}") do
       expect(page).to have_content("Bulk Discount: No Discount Applied")
     end
