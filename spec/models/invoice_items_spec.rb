@@ -15,6 +15,24 @@ RSpec.describe InvoiceItem, type: :model do
     it {should validate_presence_of(:unit_price)}
     it {should validate_presence_of(:status)}
   end
+
+  describe "class methods" do
+    describe ".total_revenue" do
+      it "can return the total revenue of an invoice" do
+        expect(@invoice_1_c5.invoice_items.total_revenue).to eq(8772)
+      end
+    end
+
+    describe ".discounted_revenue" do
+      it "can return the discounted revenue of an invoice" do
+        @invoice_item_1_i1_c5.apply_discount
+        @invoice_item_2_i1_c5.apply_discount
+        @invoice_item_3_i1_c5.apply_discount
+  
+        expect(@invoice_1_c5.invoice_items.discounted_revenue).to eq(7422)
+      end
+    end
+  end
   
   describe "class methods" do
     describe ".total_revenue" do

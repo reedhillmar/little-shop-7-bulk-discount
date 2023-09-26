@@ -23,8 +23,7 @@ class InvoiceItem < ApplicationRecord
   ## this is obsolete now
   # def best_discount
   #   ## This is my first solution - not enough AR
-  #   # best_discount = 0
-    
+  #   # best_discount = 0    
   #   # item.discounts.each do |discount|
   #   #   if quantity >= discount.quantity_threshold
   #   #     best_discount = discount.percentage_discount if discount.percentage_discount > best_discount
@@ -32,7 +31,7 @@ class InvoiceItem < ApplicationRecord
   #   # end
     
   #   # best_discount
-    
+  
   #   if discount_applied
   #     update(discount: discount_applied.percentage_discount)
   #     update(discount_event_name: discount_applied.event_name)
