@@ -23,9 +23,9 @@ RSpec.describe "As a merchant when I visit the bulk discounts index" do
 
     within "#discounts" do
       within "#discount-#{Discount.last.id}" do
-        expect(page).to have_link(Discount.last.event_name)
-        expect(page).to have_content("Percentage Discount: #{Discount.last.percentage_discount}")
-        expect(page).to have_content("Quantity Threshold: #{Discount.last.quantity_threshold}")
+        expect(page).to have_link("It's Fall AF Out Here")
+        expect(page).to have_content("Percentage Discount: 99")
+        expect(page).to have_content("Quantity Threshold: 1")
       end
     end
   end
