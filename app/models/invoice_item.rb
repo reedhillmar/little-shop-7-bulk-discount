@@ -17,6 +17,10 @@ class InvoiceItem < ApplicationRecord
   def discount_applied
     item.merchant.discounts.where("discounts.quantity_threshold <= ?", quantity).order(percentage_discount: :desc)[0]
   end
+
+  def best_discount_name
+    best_discount.event_name
+  end
   
   def best_discount
     ## This is my first solution - not enough AR
@@ -42,9 +46,12 @@ class InvoiceItem < ApplicationRecord
   
   def self.discounted_revenue
     sum do |invoice_item|
-      invoice_item.best_discount
-
-      (invoice_item.quantity * invoice_item.unit_price) * ((100 - invoice_item.discount) / 100.0)
+      # invoice_item.apply_discount
+      if invoice_item.best_discount
+        (invoice_item.quantity * invoice_item.unit_price) * ((100 - invoice_item.best_discount.percentage_discount) / 100.0)
+      else
+        (invoice_item.quantity * invoice_item.unit_price)
+      end
     end.to_i
   end
 end
