@@ -14,9 +14,9 @@ Invoice.destroy_all
 Merchant.destroy_all
 Transaction.destroy_all
 
-# # rails csv_load:all
-# # Rails.application.load_tasks
-# Rake::Task['csv_load:all'].invoke
+# rails csv_load:all
+# Rails.application.load_tasks
+Rake::Task['csv_load:all'].invoke
 
   #Merchants and items
   @merchant_1 = Merchant.create!(name: "Ray's Handmade Jewelry")
